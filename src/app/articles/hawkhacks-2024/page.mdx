@@ -1,0 +1,71 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Gurkirat Singh',
+  date: '2024-05-26',
+  title:
+    'My Experience at Hawk Hacks 2024: Building a DApp for the First Time with NEAR Protocol',
+  description: 'Building a DApp for the First Time ft. NEAR Protocol',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+Last weekend, I attended [Hawk Hacks 2024](https://hawkhacks.ca/), my second hackathon in just two weeks. I teamed up with two amazing people, and together we built _Workify_.
+
+You can check out our project on [GitHub](https://github.com/gurkiratz/workifyy) and [Taikai (Devpost)](https://taikai.network/hackbox/hackathons/hawkhacks/projects/clwd07nvc0cmiz901eq354ofp/idea).
+
+<Image
+  src={
+    'https://cvws.icloud-content.com/B/AYGRoZJWhMY003pEnpRVl9wUkuvgAaDPUz76tEKU8MGuiyOuhJcgfll5/public.jpeg?o=Aj_KdNjRPqALQTcIQZw0miMKIcX9C7oXvZ2UcK6I6NP6&v=1&x=3&a=CAogwBHldnYuCHksVUYnVJzDGO2HDOohhibw1nXkD5mNSkUSbxClj83V-zEYpeyo1_sxIgEAUgQUkuvgWgQgfll5aidRCQtQpLIhhwPVfZpaF2uEHiIz2ojg8SoZYGpCrrSNQDqv2tYD1ydyJ5Bv32EER9TNno9k4HhzVDB9ETLkBuI6kBi7vMTC8cSeOl8ahAnHdg&e=1716827862&fl=&r=521002ae-9440-4951-8d7f-d49659ef85c6-1&k=PTxSdGGtdO46pUaJlGwQHA&ckc=com.apple.photos.cloud&ckz=CMM-31BCEF97-7DAA-437E-851F-2A43F1CC4D3D&y=1&p=31&s=OvSUkO022T87M4eUrShIQWzyFfc&og=Resource%20Download'
+  }
+  width="1000"
+  height="500"
+  alt=""
+/>
+
+The idea was to develop a blockchain-based app for outsourcing work. Our main focus areas were:
+
+- Outsourcing small tasks to a large number of people.
+- Enabling micro-payments, which are not feasible with traditional methods like Stripe, where the service fee is higher than the actual payment.
+- Allowing people to complete tasks and receive immediate payouts.
+
+Our inspiration came from a video by Harkirat, with whom I collaborated to build the app. Additionally, with the fantastic sponsorship from [NEAR Protocol](https://near.org/), it was an obvious choice to use their technology. I met some wonderful people from NEAR, especially [Min](https://www.linkedin.com/in/min-qian-lu-432b38145/), who guided us throughout our journey. NEAR had already attempted a similar project, NEAR Tasks, described as:
+
+> **NEAR Tasks is an exciting new platform powered by NEAR's Blockchain Operating System (BOS) that allows anyone to earn $NEAR just by completing simple tasks. Designed for creatives, remote workers, and anyone interested in participating in the gig economy, NEAR Tasks open up the crypto economy to everyone, making it easy to start earning crypto anytime, anywhere.**
+
+The NEAR team mentioned that NEAR Tasks was still in progress and encouraged us to pursue our idea. We aimed to build a niche application specifically designed for data labeling or selecting images that described a person's task.
+
+### Our Tech Stack
+
+For our project, we chose the following tech stack:
+
+- **Frontend:** Next.js, Tailwind CSS
+- **Backend:** Node.js, Express, S3 (for storing images), Prisma & PostgreSQL (for storing user and application data)
+
+### Challenges We Faced
+
+We encountered several challenges along the way:
+
+- Connecting to the database.
+- Learning about NEAR.
+- Uploading images to S3 using a pre-signed URL.
+- Structuring the backend APIs.
+
+After two sleepless nights, subsisting mostly on pizza, playing games, hanging out, and having a lot of laughs, we finally completed our frontend and backend. However, there was a significant loophole: our full-stack logic worked fine, but we didn't establish a connection to the blockchain, which was the core of our project. Despite going through various NEAR and Mintbase Wallet documentation, we couldn't complete the smart contract and transaction functionalities.
+
+### Conclusion
+
+Although we didn't fully achieve our goal, I'm proud of what we accomplished. The judges were impressed and asked many questions, which I enjoyed. We had planned to deploy our frontend on NEAR’s BOS, as Min had explained, using Jutsu to write a full-stack application fully on-chain. NEAR’s new BOS aims to build full-stack applications that are entirely on-chain.
+
+A big thanks to the organizers and sponsors of the Hawk Hacks hackathon for making it a memorable event filled with exciting prizes!
+
+### Resources
+
+- Harkirat’s project video: [Building the entire project with Solana blockchain](https://youtu.be/zi0iR3UN-u0?si=rLzBBlvpDbHS7VHB)
+- [NEAR Documentation](https://docs.near.org/)
+- [Jutsu AI](https://jutsu.ai/) - Full-stack Web 3.0 Copilot to Build dApps

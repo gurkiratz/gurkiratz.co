@@ -1,0 +1,193 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const article = {
+  author: 'Gurkirat Singh',
+  date: '2024-02-08',
+  title: 'How to deploy Backend on AWS EC2 & GitHub CI/CD',
+  description:
+    'Creating an AWS EC2 instance, securely accessing it via SSH, and setting up a CI/CD pipeline using GitHub Actions',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+Creating an AWS EC2 instance, securely accessing it via SSH, and setting up a CI/CD pipeline using GitHub Actions can streamline your development workflow. This guide will walk you through the entire process.
+
+## **Step 0: Create AWS EC2 instance**
+
+## **Step 1: Opening Firewall Ports**
+
+1. Navigate to the **Security Groups** section in the AWS Management Console.
+2. Select your security group.
+3. Click **Edit Inbound Rules**.
+4. Add rules to allow IPv4 and IPv6 traffic on ports 80, 443, and 3000.
+
+## **Step 2: Connecting to Your EC2 Instance via SSH**
+
+1. Open a terminal and navigate to the directory where your certificate key (.pem file) is located.
+2. Set the appropriate permissions for the certificate key:
+
+   ```bash
+   chmod 600 ./your-key.pem
+   ```
+
+3. Connect to your EC2 instance using SSH:
+
+   ```bash
+   ssh -i your-key.pem ubuntu@your-ec2-public-dns
+   ```
+
+## **Step 3: Installing Necessary Software**
+
+1. **Install Node.js using NVM:**
+   Follow the instructions in the [NVM repository](https://github.com/nvm-sh/nvm#installing-and-updating).
+2. **Install PM2:**
+
+   ```bash
+   npm install -g pm2
+   ```
+
+3. **Clone Your Git Repository:**
+
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+   ```
+
+## **Step 4: Setting Up Automatic Deployment**
+
+Create a **`deploy.sh`** script in your project directory to automate pulling the latest code and restarting your server:
+
+```bash
+#!/bin/bash
+export PATH=$PATH:/home/ubuntu/.nvm/versions/node/vX.X.X/bin
+
+cd /path-to-your-project
+git pull origin master
+cd server
+pm2 kill
+pm2 start index.js
+```
+
+Replace **`vX.X.X`** with the Node.js version installed on your EC2 instance.
+
+## **Step 5: Running the Deployment Script Remotely**
+
+You can run the deployment script from your local machine:
+
+```bash
+ssh -t -i "your-key.pem" ubuntu@your-ec2-public-dns "sudo bash ~/deploy.sh"
+```
+
+## **Step 6: Setting Up GitHub CI/CD with Actions**
+
+1. **Add your SSH private key as a secret in your GitHub repository:**
+   - Go to your repository settings.
+   - Navigate to **Secrets and variables > Actions**.
+   - Add a new secret named **`SSH_PRIVATE_KEY`**.
+2. **Create a GitHub Actions Workflow:**
+
+   Add a **`.github/workflows/ci.yaml`** file to your repository:
+
+   ```yaml
+   name: Deploy
+
+   on:
+     push:
+       branches:
+         - master
+
+   jobs:
+     deploy:
+       runs-on: ubuntu-latest
+
+       steps:
+         - name: Checkout code
+           uses: actions/checkout@v2
+
+         - name: SSH and deploy
+           env:
+             SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+           run: |
+             echo "$SSH_PRIVATE_KEY" > keyfile
+             chmod 600 keyfile
+             mkdir -p ~/.ssh
+             cp known_hosts ~/.ssh/known_hosts
+             ssh -o StrictHostKeyChecking=no -i keyfile ubuntu@your-ec2-public-dns "sudo bash ~/deploy.sh"
+   ```
+
+3. **Add the EC2 host to known_hosts:**
+
+   On your local machine, run:
+
+   ```bash
+   ssh-keyscan your-ec2-public-dns >> known_hosts
+   ```
+
+   Commit the **`known_hosts`** file to your repository.
+
+## **Step 7: Pointing Your Domain to the Server, NGINX, and Certificate Management**
+
+### **Point Your Domain**
+
+Point your subdomain to your EC2 instance's IPv4 address in your domain registrar's DNS settings.
+
+### **Set Up NGINX**
+
+1. **Install NGINX:**
+
+   ```bash
+   sudo apt-get install nginx
+   ```
+
+2. **Configure NGINX:**
+
+   Edit the NGINX configuration file **`/etc/nginx/nginx.conf`**:
+
+   ```
+   events {
+       worker_connections 1024;
+   }
+
+   http {
+       server {
+           listen 80;
+           server_name your-subdomain.your-domain.com;
+
+           location / {
+               proxy_pass http://localhost:3000;
+               proxy_http_version 1.1;
+               proxy_set_header Upgrade $http_upgrade;
+               proxy_set_header Connection 'upgrade';
+               proxy_set_header Host $host;
+               proxy_cache_bypass $http_upgrade;
+           }
+       }
+   }
+   ```
+
+3. **Reload NGINX:**
+
+   ```bash
+   sudo nginx -s reload
+   ```
+
+### **Set Up SSL Certificates**
+
+1. **Install Certbot:**
+
+   Follow the instructions on the [Certbot website](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal) to install Certbot for NGINX.
+
+2. **Obtain and Install SSL Certificates:**
+
+   ```bash
+   sudo certbot --nginx
+   ```
+
+Certbot will automatically configure SSL for your NGINX server and apply HTTPS to your subdomain.
+
+By following these steps, you'll have a robust setup for deploying applications to AWS EC2, managing them with PM2, and automating deployments with GitHub Actions.
