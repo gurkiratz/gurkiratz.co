@@ -163,7 +163,7 @@ function Role({ role }: { role: Role }) {
   return (
     <li className="flex gap-4">
       <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-        <Link href={role.href}> 
+        <Link href={role.href}>
           <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
         </Link>
       </div>
@@ -201,7 +201,7 @@ function Resume() {
         label: 'Present',
         dateTime: new Date().getFullYear().toString(),
       },
-      href: 'articles/hawkhacks-2024'
+      href: 'articles/hawkhacks-2024',
     },
     {
       company: 'Airbnb',
@@ -209,7 +209,7 @@ function Resume() {
       logo: logoAirbnb,
       start: '2014',
       end: '2019',
-      href: 'articles/hawkhacks-2024'
+      href: 'articles/hawkhacks-2024',
     },
     {
       company: 'Facebook',
@@ -217,7 +217,7 @@ function Resume() {
       logo: logoFacebook,
       start: '2011',
       end: '2014',
-      href: 'articles/hawkhacks-2024'
+      href: 'articles/hawkhacks-2024',
     },
     {
       company: 'Starbucks',
@@ -225,7 +225,7 @@ function Resume() {
       logo: logoStarbucks,
       start: '2008',
       end: '2011',
-      href: 'articles/hawkhacks-2024'
+      href: 'articles/hawkhacks-2024',
     },
     {
       company: 'Hawk Hacks',
@@ -233,7 +233,7 @@ function Resume() {
       logo: logoHawkhacks,
       start: 'May 2024',
       end: '2024',
-      href: 'articles/hawkhacks-2024'
+      href: 'articles/hawkhacks-2024',
     },
     {
       company: 'GDSC Hacks',
@@ -241,7 +241,7 @@ function Resume() {
       logo: logoGdsc,
       start: 'May 2024',
       end: '2011',
-      href: 'articles/hawkhacks-2024'
+      href: 'articles/hawkhacks-2024',
     },
   ]
 
@@ -302,7 +302,8 @@ export default async function Home() {
             Hi, I{"'"}m Gurkirat!
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            A full stack developer studying Software Engineering at Humber
+            A full stack developer studying{' '}
+            <span className="italic">Software Engineering</span> at Humber
             College, Toronto. I&apos;m 20 years old and I&apos;ve been exploring
             full-stack for about 2 years now - or exactly <Timer />{' '}
             milliseconds!

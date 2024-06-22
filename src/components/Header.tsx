@@ -247,13 +247,15 @@ function Avatar({
       {...props}
     >
       <Image
-        src={avatarImage}
-        alt=""
+        src={'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719028740/IMG_6029_lseubl.jpg'}
+        alt="logo"
         sizes={large ? '4rem' : '2.25rem'}
         className={clsx(
           'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
           large ? 'h-16 w-16' : 'h-9 w-9',
         )}
+        width={64}
+        height={64}
         priority
       />
     </Link>
