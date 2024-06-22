@@ -267,11 +267,11 @@ function Resume() {
 function Photos() {
   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
   let images = [
-    'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719029854/IMG_6029_nhotep.jpg',
     'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719029852/IMG_8968_a3mdjn.jpg',
-    'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719029852/IMG_5397_vyb2nq.jpg',
-    'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719029852/IMG_6031_ubfkkx.jpg',
+    'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719029854/IMG_6029_nhotep.jpg',
+    'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719069620/gqny46em8aimynf67zvp.jpg',
     'https://res.cloudinary.com/drwqe7dxm/image/upload/v1717002671/IMG_5578_pbxlve.jpg',
+    'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719069567/hcci2yhrk1gl5ecfrc5u.jpg',
   ]
 
   return (
