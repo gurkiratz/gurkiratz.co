@@ -163,7 +163,7 @@ function Role({ role }: { role: Role }) {
   return (
     <li className="flex gap-4">
       <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-        <Link href={role.href}> 
+        <Link href={role.href}>
           <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
         </Link>
       </div>
@@ -201,7 +201,7 @@ function Resume() {
         label: 'Present',
         dateTime: new Date().getFullYear().toString(),
       },
-      href: 'articles/hawkhacks-2024'
+      href: 'articles/hawkhacks-2024',
     },
     {
       company: 'Airbnb',
@@ -209,7 +209,7 @@ function Resume() {
       logo: logoAirbnb,
       start: '2014',
       end: '2019',
-      href: 'articles/hawkhacks-2024'
+      href: 'articles/hawkhacks-2024',
     },
     {
       company: 'Facebook',
@@ -217,7 +217,7 @@ function Resume() {
       logo: logoFacebook,
       start: '2011',
       end: '2014',
-      href: 'articles/hawkhacks-2024'
+      href: 'articles/hawkhacks-2024',
     },
     {
       company: 'Starbucks',
@@ -225,7 +225,7 @@ function Resume() {
       logo: logoStarbucks,
       start: '2008',
       end: '2011',
-      href: 'articles/hawkhacks-2024'
+      href: 'articles/hawkhacks-2024',
     },
     {
       company: 'Hawk Hacks',
@@ -233,7 +233,7 @@ function Resume() {
       logo: logoHawkhacks,
       start: 'May 2024',
       end: '2024',
-      href: 'articles/hawkhacks-2024'
+      href: 'articles/hawkhacks-2024',
     },
     {
       company: 'GDSC Hacks',
@@ -241,7 +241,7 @@ function Resume() {
       logo: logoGdsc,
       start: 'May 2024',
       end: '2011',
-      href: 'articles/hawkhacks-2024'
+      href: 'articles/hawkhacks-2024',
     },
   ]
 
@@ -266,13 +266,20 @@ function Resume() {
 
 function Photos() {
   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
+  let images = [
+    'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719029854/IMG_6029_nhotep.jpg',
+    'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719029852/IMG_8968_a3mdjn.jpg',
+    'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719029852/IMG_5397_vyb2nq.jpg',
+    'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719029852/IMG_6031_ubfkkx.jpg',
+    'https://res.cloudinary.com/drwqe7dxm/image/upload/v1717002671/IMG_5578_pbxlve.jpg',
+  ]
 
   return (
     <div className="mt-16 sm:mt-20">
       <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
+        {images.map((image, imageIndex) => (
           <div
-            key={image.src}
+            key={imageIndex}
             className={clsx(
               'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800',
               rotations[imageIndex % rotations.length],
@@ -280,6 +287,8 @@ function Photos() {
           >
             <Image
               src={image}
+              width={800}
+              height={1000}
               alt=""
               sizes="(min-width: 640px) 18rem, 11rem"
               className="absolute inset-0 h-full w-full object-cover"
