@@ -247,7 +247,9 @@ function Avatar({
       {...props}
     >
       <Image
-        src={'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719028740/IMG_6029_lseubl.jpg'}
+        src={
+          'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719069979/bavgyw3opo3y89eic51y.jpg'
+        }
         alt="logo"
         sizes={large ? '4rem' : '2.25rem'}
         className={clsx(
