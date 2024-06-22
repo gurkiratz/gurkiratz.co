@@ -148,6 +148,7 @@ interface Role {
   logo: ImageProps['src']
   start: string | { label: string; dateTime: string }
   end: string | { label: string; dateTime: string }
+  href: string
 }
 
 function Role({ role }: { role: Role }) {
@@ -162,7 +163,9 @@ function Role({ role }: { role: Role }) {
   return (
     <li className="flex gap-4">
       <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-        <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
+        <Link href={role.href}> 
+          <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
+        </Link>
       </div>
       <dl className="flex flex-auto flex-wrap gap-x-2">
         <dt className="sr-only">Company</dt>
@@ -198,6 +201,7 @@ function Resume() {
         label: 'Present',
         dateTime: new Date().getFullYear().toString(),
       },
+      href: 'articles/hawkhacks-2024'
     },
     {
       company: 'Airbnb',
@@ -205,6 +209,7 @@ function Resume() {
       logo: logoAirbnb,
       start: '2014',
       end: '2019',
+      href: 'articles/hawkhacks-2024'
     },
     {
       company: 'Facebook',
@@ -212,6 +217,7 @@ function Resume() {
       logo: logoFacebook,
       start: '2011',
       end: '2014',
+      href: 'articles/hawkhacks-2024'
     },
     {
       company: 'Starbucks',
@@ -219,6 +225,7 @@ function Resume() {
       logo: logoStarbucks,
       start: '2008',
       end: '2011',
+      href: 'articles/hawkhacks-2024'
     },
     {
       company: 'Hawk Hacks',
@@ -226,6 +233,7 @@ function Resume() {
       logo: logoHawkhacks,
       start: 'May 2024',
       end: '2024',
+      href: 'articles/hawkhacks-2024'
     },
     {
       company: 'GDSC Hacks',
@@ -233,6 +241,7 @@ function Resume() {
       logo: logoGdsc,
       start: 'May 2024',
       end: '2011',
+      href: 'articles/hawkhacks-2024'
     },
   ]
 
