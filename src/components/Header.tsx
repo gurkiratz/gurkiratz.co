@@ -127,7 +127,7 @@ function MobileNavigation(
                 <CloseIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-400" />
               </Popover.Button>
               <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
-                Navigation
+                Gurkirat Singh
               </h2>
             </div>
             <nav className="mt-6">
@@ -247,7 +247,9 @@ function Avatar({
       {...props}
     >
       <Image
-        src={'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719028740/IMG_6029_lseubl.jpg'}
+        src={
+          'https://res.cloudinary.com/drwqe7dxm/image/upload/v1719069979/bavgyw3opo3y89eic51y.jpg'
+        }
         alt="logo"
         sizes={large ? '4rem' : '2.25rem'}
         className={clsx(
