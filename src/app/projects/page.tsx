@@ -51,7 +51,7 @@ const projects: Project[] = [
   {
     name: 'IOS World Clock',
     description:
-      'Outsourcing work platform and facilitate micro-payments in NEAR/Solana tokens',
+      'Web Clone of Apple World Clock w/ day.js API',
     link: { href: 'https://gurkiratz.github.io/ios-world-clock/', label: 'gurkiratz.github.io/ios-world-clock/' },
     logo: 'https://em-content.zobj.net/source/apple/391/mantelpiece-clock_1f570-fe0f.png',
   },
