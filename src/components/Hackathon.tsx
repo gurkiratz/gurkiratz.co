@@ -94,7 +94,7 @@ function HackathonList() {
             <Hackathon key={hackathonIndex} hackathon={hackathon} />
           ))}
         </ol>
-        <Button href="https://gurkiratz.github.io/gurkiratz/" variant="secondary" className="group mt-6 w-full">
+        <Button href="https://resume.gurkiratz.co/about/resume.pdf" variant="secondary" className="group mt-6 w-full">
           Resume
           <ArrowRight className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
         </Button>
