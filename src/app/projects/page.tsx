@@ -21,17 +21,24 @@ interface Project {
 
 const projects: Project[] = [
   {
+    name: '6ix City Immigration',
+    description:
+      'A beautifully designed website for 6ix City Immigration Inc.',
+    link: { href: 'https://6ixcityimmigration.ca', label: '6ixcityimmigration.ca' },
+    logo: 'https://utfs.io/f/a76ea53a-c8b2-460f-8ccb-8a9d380d0ea6-hru0oc.png',
+  },
+  {
     name: 'Convex Todo App',
     description:
       'Next.js todo app built on top of Convex Backend and Authentication with Clerk',
-    link: { href: 'https://convex-todo-app-delta.vercel.app/', label: 'convex-todo-app-delta.vercel.app' },
+    link: { href: 'https://todo.gurkiratz.co/', label: 'todo.gurkiratz.co' },
     logo: 'https://utfs.io/f/PqKzO2Akrj450gLXGPh6TG9y8f13OJSCEzecHZ7mrXajx4Uw',
   },
   {
-    name: 'We Broke The Ice - GDSC Hacks 2024 (Best UI award)',
+    name: 'We Broke The Ice - GDSC Hacks 2024 (Best UI Winner)',
     description:
       'Generate AI based icebreaker ideas for easy access and intuitive step-by-step instructions.',
-    link: { href: 'https://webroketheice.vercel.app/', label: 'webroketheice.vercel.app/' },
+    link: { href: 'https://webroketheice.gurkiratz.co/', label: 'webroketheice.gurkiratz.co/' },
     logo: 'https://em-content.zobj.net/source/twitter/408/ice_1f9ca.png',
   },
   {
@@ -47,13 +54,6 @@ const projects: Project[] = [
       'Outsourcing work platform and facilitate micro-payments in NEAR/Solana tokens',
     link: { href: 'https://gurkiratz.github.io/ios-world-clock/', label: 'gurkiratz.github.io/ios-world-clock/' },
     logo: 'https://em-content.zobj.net/source/apple/391/mantelpiece-clock_1f570-fe0f.png',
-  },
-  {
-    name: '6ix City Immigration',
-    description:
-      'A beautifully designed website for 6ix City Immigration Inc.',
-    link: { href: 'https://6ixcityimmigration.ca', label: '6ixcityimmigration.ca' },
-    logo: 'https://utfs.io/f/a76ea53a-c8b2-460f-8ccb-8a9d380d0ea6-hru0oc.png',
   },
   {
     name: 'Global Sikhs',
