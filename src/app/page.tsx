@@ -337,7 +337,7 @@ export default async function Home() {
               College, Toronto.
             </span>
             <span>
-              I&apos;m 20 years old and I&apos;ve been exploring full-stack for
+              I'm 20 years old and I've been exploring full-stack for
               about 2 years now - or exactly <Timer className="text-blue-300" />{' '}
               milliseconds!
             </span>
