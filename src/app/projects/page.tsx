@@ -8,43 +8,61 @@ import logoCosmos from '@/images/logos/cosmos.svg'
 import logoHelioStream from '@/images/logos/helio-stream.svg'
 import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
 import logoPlanetaria from '@/images/logos/planetaria.svg'
+import { Container } from '@/components/Container'
+import Link from 'next/link'
 
-const projects = [
+interface Project {
+  name: string
+  description: string
+  link: {href: string, label: string}
+  logo: string
+  
+}
+
+const projects: Project[] = [
   {
-    name: 'Planetaria',
+    name: 'Convex Todo App',
     description:
-      'Creating technology to empower civilians to explore space on their own terms.',
-    link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
-    logo: logoPlanetaria,
+      'Next.js todo app built on top of Convex Backend and Authentication with Clerk',
+    link: { href: 'https://convex-todo-app-delta.vercel.app/', label: 'convex-todo-app-delta.vercel.app' },
+    logo: 'https://utfs.io/f/PqKzO2Akrj450gLXGPh6TG9y8f13OJSCEzecHZ7mrXajx4Uw',
   },
   {
-    name: 'Animaginary',
+    name: 'We Broke The Ice - GDSC Hacks 2024 (Best UI award)',
     description:
-      'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoAnimaginary,
+      'Generate AI based icebreaker ideas for easy access and intuitive step-by-step instructions.',
+    link: { href: 'https://webroketheice.vercel.app/', label: 'webroketheice.vercel.app/' },
+    logo: 'https://em-content.zobj.net/source/twitter/408/ice_1f9ca.png',
   },
   {
-    name: 'HelioStream',
+    name: 'Workify - Hawk Hacks 2024',
     description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoHelioStream,
+      'Outsourcing work platform and facilitate micro-payments in NEAR/Solana tokens',
+    link: { href: 'https://github.com/gurkiratz/workifyy', label: 'github.com/gurkiratz/workifyy' },
+    logo: 'https://em-content.zobj.net/source/apple/391/hammer-and-wrench_1f6e0-fe0f.png',
   },
   {
-    name: 'cosmOS',
+    name: 'IOS World Clock',
     description:
-      'The operating system that powers our Planetaria space shuttles.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoCosmos,
+      'Outsourcing work platform and facilitate micro-payments in NEAR/Solana tokens',
+    link: { href: 'https://gurkiratz.github.io/ios-world-clock/', label: 'gurkiratz.github.io/ios-world-clock/' },
+    logo: 'https://em-content.zobj.net/source/apple/391/mantelpiece-clock_1f570-fe0f.png',
   },
   {
-    name: 'OpenShuttle',
+    name: '6ix City Immigration',
     description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoOpenShuttle,
+      'A beautifully designed website for 6ix City Immigration Inc.',
+    link: { href: 'https://6ixcityimmigration.ca', label: '6ixcityimmigration.ca' },
+    logo: 'https://utfs.io/f/a76ea53a-c8b2-460f-8ccb-8a9d380d0ea6-hru0oc.png',
   },
+  {
+    name: 'Global Sikhs',
+    description:
+      'A well built website for Global Sikhs NGO (under construction)',
+    link: { href: 'https://globalsikhs-v2.vercel.app/', label: 'globalsikhs-v2.vercel.app' },
+    logo: 'https://utfs.io/f/PqKzO2Akrj45v88NKnQg9Sapzh57q1i0IFHoOTnGjLlNWu3x',
+  },
+  
 ]
 
 function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -65,11 +83,19 @@ export const metadata: Metadata = {
 
 export default function Projects() {
   return (
-    <SimpleLayout
-      title="Things I’ve made trying to put my dent in the universe."
-      intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved."
-    >
-      <ul
+    <Container className="mt-16 sm:mt-32">
+      <header className="max-w-2xl">
+        <h1 className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-100">
+        Building My Vision
+        </h1>
+        <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+        Here is a showcase of some of my projects that I made. They can be found on my <Link className='font-bold underline' href='https://github.com/gurkiratz'>Github</Link>! I am working on some projects that involve TypeScript and NextJS, they will be uploaded in a while.
+
+
+        </p>
+      </header>
+      <div className="mt-16 sm:mt-20">
+        <ul
         role="list"
         className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
       >
@@ -79,12 +105,14 @@ export default function Projects() {
               <Image
                 src={project.logo}
                 alt=""
+                width={'100'}
+                height={'100'}
                 className="h-8 w-8"
                 unoptimized
               />
             </div>
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-              <Card.Link href={project.link.href}>{project.name}</Card.Link>
+              <Card.Link href={project.link.href} target='_blank'>{project.name}</Card.Link>
             </h2>
             <Card.Description>{project.description}</Card.Description>
             <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
@@ -93,7 +121,10 @@ export default function Projects() {
             </p>
           </Card>
         ))}
-      </ul>
-    </SimpleLayout>
+      </ul></div>
+    </Container>
+    
+      
+    
   )
 }

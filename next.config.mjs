@@ -6,7 +6,7 @@ import remarkGfm from 'remark-gfm'
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
   images: {
-    domains: ['res.cloudinary.com'],
+    domains: ['res.cloudinary.com', 'utfs.io'],
   },
 }
 

@@ -25,6 +25,10 @@ import image5 from '@/images/photos/image-5.jpg'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 import Timer from '@/components/Timer'
+import Hackathon from '@/components/Hackathon'
+import Projects from './projects/page'
+import TypingText from '@/components/animata/text/typing-text'
+import TextAnimate from '@/components/animata/text/wave-reveal'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -190,6 +194,15 @@ function Role({ role }: { role: Role }) {
   )
 }
 
+interface Role {
+  company: string
+  title: string
+  logo: ImageProps['src']
+  start: string | { label: string; dateTime: string }
+  end: string | { label: string; dateTime: string }
+  href: string
+}
+
 function Resume() {
   let resume: Array<Role> = [
     {
@@ -301,21 +314,43 @@ function Photos() {
 }
 
 export default async function Home() {
-  let articles = (await getAllArticles()).slice(0, 4)
+  let articles = (await getAllArticles()).slice(0, 2)
 
   return (
     <>
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Hi, I{"'"}m Gurkirat!
+            Hi, I{"'"}m{' '}
+            <Link
+              href={'https://github.com/gurkiratz'}
+              className="hover:underline"
+            >
+              Gurkirat
+            </Link>
+            !
           </h1>
-          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            A full stack developer studying{' '}
-            <span className="italic">Software Engineering</span> at Humber
-            College, Toronto. I&apos;m 20 years old and I&apos;ve been exploring
-            full-stack for about 2 years now - or exactly <Timer />{' '}
-            milliseconds!
+          <p className="mt-6 flex flex-col gap-2 text-base text-zinc-600 dark:text-zinc-300">
+            <span>
+              A full stack developer studying{' '}
+              <span className="italic">Software Engineering</span> at Humber
+              College, Toronto.
+            </span>
+            <span>
+              I&apos;m 20 years old and I&apos;ve been exploring full-stack for
+              about 2 years now - or exactly <Timer className="text-blue-300" />{' '}
+              milliseconds!
+            </span>
+            <span>
+              I use HTML, CSS, JavaScript and TypeScript. Though constantly
+              changing, my focus right now is React.js, Node, Express, Next.js
+              and Docker. Besides, I also have a secret affair with Tailwind
+              CSS.{' '}
+              <span className="italic">
+                Shh, don't tell my other coding frameworks, they might get
+                jealous!
+              </span>
+            </span>
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
@@ -333,25 +368,28 @@ export default async function Home() {
               aria-label="Follow on X"
               icon={XIcon}
             />
-            <SocialLink
-              href="https://www.instagram.com/gurkiratxz/"
-              aria-label="Follow on Instagram"
-              icon={InstagramIcon}
-            />
           </div>
         </div>
       </Container>
-      <Photos />
+      {/* <Photos /> */}
+      <Projects />
       <Container className="mt-24 md:mt-28">
-        <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
+        <header className="max-w-2xl">
+          <h1 className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-100">
+            Articles
+          </h1>
+          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+            Thoughts on Software Development, College life, and Gadgets.
+          </p>
+        </header>
+        <div className="mx-auto mt-16 grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
             {articles.map((article) => (
               <Article key={article.slug} article={article} />
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Newsletter />
-            <Resume />
+            <Hackathon />
           </div>
         </div>
       </Container>

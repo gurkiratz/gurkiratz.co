@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 
-function Timer() {
+function Timer({className}: {className?: string}) {
   const [timeDifference, setTimeDifference] = useState(0)
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function Timer() {
     }
   }, [])
 
-  return <span>{timeDifference}</span>
+  return <span className={className}>{timeDifference}</span>
 }
 
 export default Timer
