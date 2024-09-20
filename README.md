@@ -13,10 +13,6 @@
 Crafted with <span style="color: #8b0000;">&hearts;</span> by Gurkirat Singh. Template by <a href="https://tailwindui.com" target="_blank">Tailwind UI</a>
 </p>
 
-# Spotlight
-
-Spotlight is a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
-
 ## 🛠 Installation & Set Up
 
 1. Install the npm dependencies:
