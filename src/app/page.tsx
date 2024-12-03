@@ -317,6 +317,8 @@ function Photos() {
   )
 }
 
+export const revalidate = 3600 // revalidate every hour
+
 export default async function Home() {
   const intro1 = (await getIntro('62SHVRXpCtrFVmtD6NagzO')).fields.intro
   const intro2 = (await getIntro('3gGVah8Ebh2BEJGOXUywUn')).fields.intro
