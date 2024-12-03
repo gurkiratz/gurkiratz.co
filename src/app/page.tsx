@@ -6,6 +6,7 @@ import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import {
+  DevpostIcon,
   GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
@@ -29,6 +30,9 @@ import Hackathon from '@/components/Hackathon'
 import Projects from './projects/page'
 import TypingText from '@/components/animata/text/typing-text'
 import TextAnimate from '@/components/animata/text/wave-reveal'
+import { getIntro, RichTextContent } from '@/lib/contentful'
+import RichTextRenderer from '@/components/rich-text-renderer'
+import { Suspense } from 'react'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -314,6 +318,9 @@ function Photos() {
 }
 
 export default async function Home() {
+  const intro1 = (await getIntro('62SHVRXpCtrFVmtD6NagzO')).fields.intro
+  const intro2 = (await getIntro('3gGVah8Ebh2BEJGOXUywUn')).fields.intro
+
   let articles = (await getAllArticles()).slice(0, 2)
 
   return (
@@ -330,28 +337,11 @@ export default async function Home() {
             </Link>
             !
           </h1>
-          <p className="mt-6 flex flex-col gap-2 text-base text-zinc-600 dark:text-zinc-300">
-            <span>
-              A full stack developer studying{' '}
-              <span className="italic">Software Engineering</span> at Humber
-              College, Toronto.
-            </span>
-            <span>
-              I&apos;m 20 years old and I&apos;ve been exploring full-stack for
-              about 2 years now - or exactly <Timer className="text-blue-300" />{' '}
-              milliseconds!
-            </span>
-            <span>
-              I use HTML, CSS, JavaScript and TypeScript. Though constantly
-              changing, my focus right now is React.js, Node, Express, Next.js
-              and Docker. Besides, I also have a secret affair with Tailwind
-              CSS.{' '}
-              <span className="italic">
-                Shh, don't tell my other coding frameworks, they might get
-                jealous!
-              </span>
-            </span>
-          </p>
+          <span className="mt-6 block text-base text-zinc-600 dark:text-zinc-300">
+            <RichTextRenderer content={intro1} />
+            <span className='mb-3 block'>I'm 21. For the past 3 years—or exactly <Timer className="dark:text-blue-300 text-blue-500" /> milliseconds—I've been turning coffee and code into building apps, solving problems, and having fun breaking (and fixing) things!</span>
+            <RichTextRenderer content={intro2} />
+          </span>
           <div className="mt-6 flex gap-6">
             <SocialLink
               href="https://github.com/gurkiratz"
@@ -368,6 +358,17 @@ export default async function Home() {
               aria-label="Follow on X"
               icon={XIcon}
             />
+            <SocialLink
+              href="https://instagram.com/gurkiratxz"
+              aria-label="Follow on Instagram"
+              icon={InstagramIcon}
+            />
+            <SocialLink
+              href="https://devpost.com/gurkiratz/challenges"
+              aria-label="Follow on Devpost"
+              icon={DevpostIcon}
+            />
+
           </div>
         </div>
       </Container>
