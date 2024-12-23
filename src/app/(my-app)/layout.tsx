@@ -1,15 +1,14 @@
 import { type Metadata } from 'next'
 
-import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
 
 import '@/styles/tailwind.css'
+import { Providers } from '@/app/(my-app)/providers'
 
 export const metadata: Metadata = {
   title: {
     template: '%s - Gurkirat Singh',
-    default:
-      'Gurkirat Singh - Full Stack Developer and student',
+    default: 'Gurkirat Singh - Full Stack Developer and student',
   },
   description:
     'I’m Gurkirat, a Software Engineering student at Humber Polytechnic, Toronto.',
