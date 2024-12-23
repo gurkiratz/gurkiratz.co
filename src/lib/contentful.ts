@@ -1,3 +1,4 @@
+/*
 import { createClient, EntryFieldTypes } from 'contentful'
 import { Document } from '@contentful/rich-text-types'
 
@@ -26,3 +27,4 @@ export async function getIntro(entryId: string) {
   const intro = await client.getEntry<IntroSkeleton>(entryId)
   return intro
 }
+**/

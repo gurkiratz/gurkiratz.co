@@ -30,8 +30,8 @@ import Hackathon from '@/components/Hackathon'
 import Projects from './projects/page'
 import TypingText from '@/components/animata/text/typing-text'
 import TextAnimate from '@/components/animata/text/wave-reveal'
-import { getIntro, RichTextContent } from '@/lib/contentful'
-import RichTextRenderer from '@/components/rich-text-renderer'
+// import { getIntro, RichTextContent } from '@/lib/contentful'
+// import RichTextRenderer from '@/components/rich-text-renderer'
 import { Suspense } from 'react'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -320,8 +320,8 @@ function Photos() {
 export const revalidate = 3600 // revalidate every hour
 
 export default async function Home() {
-  const intro1 = (await getIntro('62SHVRXpCtrFVmtD6NagzO')).fields.intro
-  const intro2 = (await getIntro('3gGVah8Ebh2BEJGOXUywUn')).fields.intro
+  // const intro1 = (await getIntro('62SHVRXpCtrFVmtD6NagzO')).fields.intro
+  // const intro2 = (await getIntro('3gGVah8Ebh2BEJGOXUywUn')).fields.intro
 
   let articles = (await getAllArticles()).slice(0, 2)
 
@@ -340,9 +340,15 @@ export default async function Home() {
             !
           </h1>
           <span className="mt-6 block text-base text-zinc-600 dark:text-zinc-300">
-            <RichTextRenderer content={intro1} />
-            <span className='mb-3 block'>I'm 21. For the past 3 years—or exactly <Timer className="dark:text-blue-300 text-blue-500" /> milliseconds—I've been turning coffee and code into building apps, solving problems, and having fun breaking (and fixing) things!</span>
-            <RichTextRenderer content={intro2} />
+            I'm 21. For the past 3 years
+            {/* <RichTextRenderer content={intro1} />
+            <span className="mb-3 block">
+              I'm 21. For the past 3 years—or exactly{' '}
+              <Timer className="text-blue-500 dark:text-blue-300" />{' '}
+              milliseconds—I've been turning coffee and code into building apps,
+              solving problems, and having fun breaking (and fixing) things!
+            </span>
+            <RichTextRenderer content={intro2} /> */}
           </span>
           <div className="mt-6 flex gap-6">
             <SocialLink
@@ -370,7 +376,6 @@ export default async function Home() {
               aria-label="Follow on Devpost"
               icon={DevpostIcon}
             />
-
           </div>
         </div>
       </Container>
