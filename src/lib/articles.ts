@@ -15,7 +15,7 @@ async function importArticle(
   articleFilename: string,
 ): Promise<ArticleWithSlug> {
   let { article } = (await import(
-    `../app/(my-app)/articles/${articleFilename}`
+    `../app/(frontend)/articles/${articleFilename}`
   )) as {
     default: React.ComponentType
     article: Article

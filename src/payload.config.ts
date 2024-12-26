@@ -19,6 +19,11 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    autoLogin: {
+      email: 'singh.gurkirat2707@gmail.com',
+      password: 'waheguru2707',
+      prefillOnly: true,
+    },
   },
   collections: [Users, Media],
   editor: lexicalEditor(),

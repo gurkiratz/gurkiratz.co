@@ -3,7 +3,7 @@
 import { useContext } from 'react'
 import { useRouter } from 'next/navigation'
 
-import { AppContext } from '@/app/(my-app)/providers'
+import { AppContext } from '@/app/(frontend)/providers'
 import { Container } from '@/components/Container'
 import { Prose } from '@/components/Prose'
 import { type ArticleWithSlug } from '@/lib/articles'
