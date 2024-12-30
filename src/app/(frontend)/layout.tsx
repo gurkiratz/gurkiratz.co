@@ -4,6 +4,10 @@ import { Layout } from '@/components/Layout'
 
 import '@/styles/tailwind.css'
 import { Providers } from '@/app/(frontend)/providers'
+// import { Providers } from '@/providers'
+import { Header } from '@/components/Header'
+import { Footer } from '@/components/Footer'
+import { InitTheme } from '@/providers/Theme/InitTheme'
 
 export const metadata: Metadata = {
   title: {
@@ -26,10 +30,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+      <head>
+        <InitTheme />
+      </head>
       <body className="flex h-full bg-zinc-50 dark:bg-black">
         <Providers>
-          <div className="flex w-full">
-            <Layout>{children}</Layout>
+          <div className="relative flex w-full flex-col">
+            {/* <Layout>{children}</Layout> */}
+            <Header />
+            {children}
+            <Footer />
           </div>
         </Providers>
       </body>

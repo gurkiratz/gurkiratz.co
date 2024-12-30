@@ -20,6 +20,18 @@ const nextConfig = {
         port: '',
         search: '',
       },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3000',
+        search: '',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3001',
+        search: '',
+      },
     ],
   },
 }
