@@ -27,7 +27,7 @@ export const PostHero: React.FC<{
       )}
     >
       <Container>
-        <div className="relative z-10 flex flex-col justify-center max-w-4xl mx-auto text-white">
+        <div className="relative z-10 flex flex-col justify-center max-w-4xl mx-auto dark:text-white">
           <div className="mb-6">
             {publishedAt && (
               <time dateTime={publishedAt}>{formatDateTime(publishedAt)}</time>
@@ -80,6 +80,7 @@ export const PostHero: React.FC<{
           />
         )}{' '}
         <div className="absolute bottom-0 left-0 w-full pointer-events-none h-1/2 bg-gradient-to-t from-gray-100 to-transparent dark:from-black dark:to-transparent" />
+        {/* <div className="pointer-events-none absolute bottom-0 left-0 h-1/2 w-full bg-gradient-to-t from-[var(--tw-prose-body)] to-[var(--tw-prose-invert-body)]" /> */}
       </div>
     </div>
   )

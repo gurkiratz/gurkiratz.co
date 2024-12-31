@@ -1,32 +1,24 @@
 'use client'
-import { Button } from '@/components/ui/button'
-import { CopyIcon } from '@payloadcms/ui/icons/Copy'
+
+import { Copy, Check } from 'lucide-react'
 import { useState } from 'react'
 
 export function CopyButton({ code }: { code: string }) {
-  const [text, setText] = useState('Copy')
+  const [isCopied, setIsCopied] = useState(false)
 
-  function updateCopyStatus() {
-    if (text === 'Copy') {
-      setText(() => 'Copied!')
-      setTimeout(() => {
-        setText(() => 'Copy')
-      }, 1000)
-    }
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(code)
+    setIsCopied(true)
+    setTimeout(() => setIsCopied(false), 2000)
   }
 
   return (
-    <div className="flex justify-end align-middle">
-      <Button
-        className="flex gap-1"
-        onClick={async () => {
-          await navigator.clipboard.writeText(code)
-          updateCopyStatus()
-        }}
-      >
-        <p>{text}</p>
-        <CopyIcon />
-      </Button>
-    </div>
+    <button
+      onClick={handleCopy}
+      className="p-2 text-gray-500 transition-colors rounded-md hover:bg-gray-200 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200"
+      aria-label={isCopied ? 'Copied!' : 'Copy code'}
+    >
+      {isCopied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
+    </button>
   )
 }
