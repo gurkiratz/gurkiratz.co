@@ -14,6 +14,7 @@ import { PostHero } from '@/heros/PostHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/payload/LivePreviewListener'
+import { Container } from '@/components/Container'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -50,34 +51,38 @@ export default async function Post({ params: paramsPromise }: Args) {
   if (!post) return <PayloadRedirects url={url} />
 
   return (
-    <article className="pb-16 pt-16">
-      <PageClient />
+    <Container className="mt-16 lg:mt-32">
+      <div className="mx-auto max-w-4xl">
+        <article className="pb-16 pt-16">
+          <PageClient />
 
-      {/* Allows redirects for valid pages too */}
-      <PayloadRedirects disableNotFound url={url} />
+          {/* Allows redirects for valid pages too */}
+          <PayloadRedirects disableNotFound url={url} />
 
-      {draft && <LivePreviewListener />}
+          {draft && <LivePreviewListener />}
 
-      <PostHero post={post} />
+          <PostHero post={post} />
 
-      <div className="flex flex-col items-center gap-4 pt-8">
-        <div className="container">
-          <RichText
-            className="mx-auto max-w-[48rem]"
-            data={post.content}
-            enableGutter={false}
-          />
-          {post.relatedPosts && post.relatedPosts.length > 0 && (
-            <RelatedPosts
-              className="col-span-3 col-start-1 mt-12 max-w-[52rem] grid-rows-[2fr] lg:grid lg:grid-cols-subgrid"
-              docs={post.relatedPosts.filter(
-                (post) => typeof post === 'object',
+          <div className="flex flex-col items-center gap-4 pt-8">
+            <div className="container">
+              <RichText
+                className="mx-auto max-w-[48rem]"
+                data={post.content}
+                enableGutter={false}
+              />
+              {post.relatedPosts && post.relatedPosts.length > 0 && (
+                <RelatedPosts
+                  className="col-span-3 col-start-1 mt-12 max-w-[52rem] grid-rows-[2fr] lg:grid lg:grid-cols-subgrid"
+                  docs={post.relatedPosts.filter(
+                    (post) => typeof post === 'object',
+                  )}
+                />
               )}
-            />
-          )}
-        </div>
+            </div>
+          </div>
+        </article>
       </div>
-    </article>
+    </Container>
   )
 }
 

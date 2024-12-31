@@ -32,7 +32,10 @@ import TypingText from '@/components/animata/text/typing-text'
 import TextAnimate from '@/components/animata/text/wave-reveal'
 // import { getIntro, RichTextContent } from '@/lib/contentful'
 // import RichTextRenderer from '@/components/rich-text-renderer'
-import { Suspense } from 'react'
+import { cache, Suspense } from 'react'
+import RichText from '@/components/payload/RichText'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -320,11 +323,8 @@ function Photos() {
 export const revalidate = 3600 // revalidate every hour
 
 export default async function Home() {
-  // const intro1 = (await getIntro('62SHVRXpCtrFVmtD6NagzO')).fields.intro
-  // const intro2 = (await getIntro('3gGVah8Ebh2BEJGOXUywUn')).fields.intro
-
   let articles = (await getAllArticles()).slice(0, 2)
-
+  const introText = await getIntroText()
   return (
     <>
       <Container className="mt-9">
@@ -340,9 +340,9 @@ export default async function Home() {
             !
           </h1>
           <span className="mt-6 block text-base text-zinc-600 dark:text-zinc-300">
-            I'm 21. For the past 3 years
+            <RichText data={introText} />
             {/* <RichTextRenderer content={intro1} />
-            <span className="mb-3 block">
+            <span className="block mb-3">
               I'm 21. For the past 3 years—or exactly{' '}
               <Timer className="text-blue-500 dark:text-blue-300" />{' '}
               milliseconds—I've been turning coffee and code into building apps,
@@ -404,3 +404,13 @@ export default async function Home() {
     </>
   )
 }
+
+const getIntroText = cache(async () => {
+  const payload = await getPayload({ config: configPromise })
+
+  const result = await payload.findGlobal({
+    slug: 'intro',
+  })
+
+  return result['intro-text']
+})

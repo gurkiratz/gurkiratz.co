@@ -1,17 +1,22 @@
-import type { Metadata } from 'next/types'
-
-import { CollectionArchive } from '@/components/payload/CollectionArchive'
-import { PageRange } from '@/components/payload/PageRange'
-import { Pagination } from '@/components/payload/Pagination'
-import configPromise from '@payload-config'
+import { type Metadata } from 'next'
+import { Container } from '@/components/Container'
+import Link from 'next/link'
 import { getPayload } from 'payload'
-import React from 'react'
-import PageClient from './page.client'
+import configPromise from '@payload-config'
+import { CollectionArchive } from '@/components/payload/CollectionArchive'
+import { SimpleLayout } from '@/components/SimpleLayout'
+import { ArticleCollectionArchive } from '@/components/payload/ArticleCollectionArchive'
+import { ArticleCard } from '@/components/payload/ArticleCard'
+
+export const metadata: Metadata = {
+  title: 'Projects',
+  description: 'Things I’ve made trying to put my dent in the universe.',
+}
 
 export const dynamic = 'force-static'
 export const revalidate = 600
 
-export default async function Page() {
+export default async function Projects() {
   const payload = await getPayload({ config: configPromise })
 
   const posts = await payload.find({
@@ -24,40 +29,34 @@ export default async function Page() {
       slug: true,
       categories: true,
       meta: true,
+      publishedAt: true,
     },
   })
 
   return (
-    <div className="pb-24 pt-24">
-      <PageClient />
-      <div className="container mb-16">
-        <div className="prose max-w-none dark:prose-invert">
-          <h1>Posts</h1>
+    <SimpleLayout
+      title="Writing on Software Development, College life, and Gadgets."
+      intro="All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order."
+    >
+      <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
+        <div className="flex max-w-3xl flex-col space-y-16">
+          {posts.docs?.map((result) => {
+            if (typeof result === 'object' && result !== null) {
+              return (
+                <ArticleCard
+                  doc={result}
+                  key={result.slug}
+                  relationTo="posts"
+                  showCategories
+                />
+              )
+            }
+
+            return null
+          })}
+          {/* <ArticleCollectionArchive posts={posts.docs} /> */}
         </div>
       </div>
-
-      <div className="container mb-8">
-        <PageRange
-          collection="posts"
-          currentPage={posts.page}
-          limit={12}
-          totalDocs={posts.totalDocs}
-        />
-      </div>
-
-      <CollectionArchive posts={posts.docs} />
-
-      <div className="container">
-        {posts.totalPages > 1 && posts.page && (
-          <Pagination page={posts.page} totalPages={posts.totalPages} />
-        )}
-      </div>
-    </div>
+    </SimpleLayout>
   )
-}
-
-export function generateMetadata(): Metadata {
-  return {
-    title: `Payload Website Template Posts`,
-  }
 }

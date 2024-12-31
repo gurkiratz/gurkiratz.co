@@ -14,6 +14,7 @@ import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/payload/LivePreviewListener'
+import { Container } from '@/components/Container'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -68,16 +69,20 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { hero, layout } = page
 
   return (
-    <article className="pb-24 pt-16">
-      <PageClient />
-      {/* Allows redirects for valid pages too */}
-      <PayloadRedirects disableNotFound url={url} />
+    <Container className="mt-16 lg:mt-32">
+      <div className="mx-auto max-w-2xl">
+        <PageClient />
+        {/* Allows redirects for valid pages too */}
+        <PayloadRedirects disableNotFound url={url} />
 
-      {draft && <LivePreviewListener />}
+        {draft && <LivePreviewListener />}
 
-      <RenderHero {...hero} />
-      <RenderBlocks blocks={layout} />
-    </article>
+        <article>
+          <RenderHero {...hero} />
+          <RenderBlocks blocks={layout} />
+        </article>
+      </div>
+    </Container>
   )
 }
 

@@ -14,6 +14,7 @@ import { Categories } from './collections/Categories'
 import { Pages } from './collections/Pages'
 import { Header } from './Header/config'
 import { Footer } from './Footer/config'
+import { Intro } from './collections/Intro'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -56,7 +57,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Posts, Categories, Pages],
-  globals: [Header, Footer],
+  globals: [Header, Footer, Intro],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

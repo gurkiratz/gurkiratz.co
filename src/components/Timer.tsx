@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 
-function Timer({className}: {className?: string}) {
+function Timer({ className }: { className?: string }) {
   const [timeDifference, setTimeDifference] = useState(0)
 
   useEffect(() => {
