@@ -9,6 +9,7 @@ import type { Post } from '@/payload-types'
 import { Media } from '@/components/payload/Media'
 import { formatDateTime } from '@/utilities/formatDateTime'
 import { Card } from '@/components/Card'
+import { Badge } from '../ui/badge'
 export type CardPostData = Pick<
   Post,
   'slug' | 'categories' | 'meta' | 'title' | 'publishedAt'
@@ -57,14 +58,31 @@ export const ArticleCard: React.FC<{
             {formatDateTime(publishedAt)}
           </Card.Eyebrow>
         )}
-        <Card.Description>------Article Description-----</Card.Description>
+        <Card.Description>
+          <div className="flex flex-wrap gap-2 mt-1">
+            {categories?.map((category, index) => {
+              if (typeof category === 'object' && category !== null) {
+                const { title: categoryTitle } = category
+
+                const titleToUse = categoryTitle || 'Untitled category'
+
+                return (
+                  <Badge key={category.id} variant="outline">
+                    {titleToUse.toUpperCase()}
+                  </Badge>
+                )
+              }
+              return null
+            })}
+          </div>
+        </Card.Description>
         <Card.Cta>Read article</Card.Cta>
       </Card>
       {publishedAt && (
         <Card.Eyebrow
           as="time"
           dateTime={publishedAt}
-          className="mt-1 hidden md:block"
+          className="hidden mt-1 md:block"
         >
           {formatDateTime(publishedAt)}
         </Card.Eyebrow>

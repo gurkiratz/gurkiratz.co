@@ -58,7 +58,6 @@ export const Posts: CollectionConfig<'posts'> = {
         })
         return path
       },
-      // url: 'http://localhost:3000/new-projects',
     },
     preview: (data, { req }) =>
       generatePreviewPath({
@@ -175,6 +174,7 @@ export const Posts: CollectionConfig<'posts'> = {
         },
         position: 'sidebar',
       },
+      required: true,
       hooks: {
         beforeChange: [
           ({ siblingData, value }) => {

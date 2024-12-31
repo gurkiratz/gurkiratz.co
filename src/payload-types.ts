@@ -149,7 +149,7 @@ export interface Post {
     image?: (string | null) | Media;
     description?: string | null;
   };
-  publishedAt?: string | null;
+  publishedAt: string;
   authors?: (string | User)[] | null;
   populatedAuthors?:
     | {

@@ -51,9 +51,10 @@ export default async function Post({ params: paramsPromise }: Args) {
   if (!post) return <PayloadRedirects url={url} />
 
   return (
-    <Container className="mt-16 lg:mt-32">
-      <div className="mx-auto max-w-4xl">
-        <article className="pb-16 pt-16">
+    <>
+      <PostHero post={post} />
+      <Container className="">
+        <article className="max-w-4xl mx-auto">
           <PageClient />
 
           {/* Allows redirects for valid pages too */}
@@ -61,7 +62,7 @@ export default async function Post({ params: paramsPromise }: Args) {
 
           {draft && <LivePreviewListener />}
 
-          <PostHero post={post} />
+          {/* <PostHero post={post} /> */}
 
           <div className="flex flex-col items-center gap-4 pt-8">
             <div className="container">
@@ -81,8 +82,8 @@ export default async function Post({ params: paramsPromise }: Args) {
             </div>
           </div>
         </article>
-      </div>
-    </Container>
+      </Container>
+    </>
   )
 }
 

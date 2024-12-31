@@ -6,6 +6,8 @@ import type { Post } from '@/payload-types'
 import { Media } from '@/components/payload/Media'
 import { formatAuthors } from '@/utilities/formatAuthors'
 import { Badge } from '@/components/ui/badge'
+import { cn } from '@/lib/utils'
+import { Container } from '@/components/Container'
 
 export const PostHero: React.FC<{
   post: Post
@@ -18,16 +20,21 @@ export const PostHero: React.FC<{
     formatAuthors(populatedAuthors) !== ''
 
   return (
-    <div className="relative -mt-[10.4rem] flex items-end">
-      <div className="container relative z-10 pb-8 lg:grid lg:grid-cols-[1fr_48rem_1fr] dark:text-white">
-        <div className="col-span-1 col-start-1 md:col-span-2 md:col-start-2">
+    <div
+      className={cn(
+        'relative z-10 flex items-end justify-center',
+        heroImage ? '-mt-[10.4rem]' : 'mt-12',
+      )}
+    >
+      <Container>
+        <div className="relative z-10 flex flex-col justify-center max-w-4xl mx-auto text-white">
           <div className="mb-6">
             {publishedAt && (
               <time dateTime={publishedAt}>{formatDateTime(publishedAt)}</time>
             )}
           </div>
           <div className="">
-            <h1 className="mb-6 text-3xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+            <h1 className="mb-6 text-4xl tracking-tight sm:text-5xl">
               {title}
             </h1>
           </div>
@@ -42,7 +49,7 @@ export const PostHero: React.FC<{
               </div>
             )}
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 mb-6">
             {categories?.map((category, index) => {
               if (typeof category === 'object' && category !== null) {
                 const { title: categoryTitle } = category
@@ -53,7 +60,7 @@ export const PostHero: React.FC<{
 
                 return (
                   <Badge key={category.id} variant="secondary">
-                    {titleToUse}
+                    {titleToUse.toUpperCase()}
                   </Badge>
                 )
               }
@@ -61,8 +68,9 @@ export const PostHero: React.FC<{
             })}
           </div>
         </div>
-      </div>
-      <div className="min-h-[80vh] select-none">
+      </Container>
+      <div className={cn('select-none', heroImage ? 'min-h-[80vh]' : '')}>
+        {' '}
         {heroImage && typeof heroImage !== 'string' && (
           <Media
             fill
@@ -70,8 +78,8 @@ export const PostHero: React.FC<{
             imgClassName="-z-10 object-cover"
             resource={heroImage}
           />
-        )}
-        <div className="pointer-events-none bottom-0 left-0 hidden h-1/2 w-full bg-gradient-to-t from-black to-transparent dark:absolute" />
+        )}{' '}
+        <div className="absolute bottom-0 left-0 w-full pointer-events-none h-1/2 bg-gradient-to-t from-gray-100 to-transparent dark:from-black dark:to-transparent" />
       </div>
     </div>
   )
