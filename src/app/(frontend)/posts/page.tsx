@@ -1,12 +1,7 @@
 import { type Metadata } from 'next'
-import { Container } from '@/components/Container'
-import Link from 'next/link'
-import { getPayload } from 'payload'
-import configPromise from '@payload-config'
-import { CollectionArchive } from '@/components/payload/CollectionArchive'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import { ArticleCollectionArchive } from '@/components/payload/ArticleCollectionArchive'
 import { ArticleCard } from '@/components/payload/ArticleCard'
+import { queryAllPosts } from '@/lib/articles'
 
 export const metadata: Metadata = {
   title: 'Articles',
@@ -44,27 +39,5 @@ export default async function Projects() {
         </div>
       </div>
     </SimpleLayout>
-  )
-}
-
-export const queryAllPosts = async () => {
-  const payload = await getPayload({ config: configPromise })
-
-  const posts = await payload.find({
-    collection: 'posts',
-    depth: 1,
-    limit: 12,
-    overrideAccess: false,
-    select: {
-      title: true,
-      slug: true,
-      categories: true,
-      meta: true,
-      publishedAt: true,
-    },
-  })
-
-  return posts.docs.sort(
-    (a, z) => +new Date(z.publishedAt) - +new Date(a.publishedAt),
   )
 }

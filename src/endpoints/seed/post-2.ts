@@ -3,7 +3,7 @@ import type { Post } from '@/payload-types'
 export const post2: Partial<Post> = {
   slug: 'global-gaze',
   _status: 'published',
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // eslint-disable-next-line
   // @ts-ignore
   authors: ['{{AUTHOR}}'],
   content: {
@@ -215,13 +215,13 @@ export const post2: Partial<Post> = {
       version: 1,
     },
   },
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // eslint-disable-next-line
   // @ts-ignore
   heroImage: '{{IMAGE_1}}',
   meta: {
     description:
       'Explore the untold and overlooked. A magnified view into the corners of the world, where every story deserves its spotlight.',
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // eslint-disable-next-line
     // @ts-ignore
     image: '{{IMAGE_1}}',
     title: 'Global Gaze: Beyond the Headlines',

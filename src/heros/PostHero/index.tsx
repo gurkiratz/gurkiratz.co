@@ -33,23 +33,7 @@ export const PostHero: React.FC<{
               <time dateTime={publishedAt}>{formatDateTime(publishedAt)}</time>
             )}
           </div>
-          <div className="">
-            <h1 className="mb-6 text-4xl tracking-tight sm:text-5xl">
-              {title}
-            </h1>
-          </div>
-          <div className="flex flex-col gap-4 md:flex-row md:gap-16">
-            {hasAuthors && (
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-col gap-1">
-                  <p className="text-sm">Author</p>
-
-                  <p>{formatAuthors(populatedAuthors)}</p>
-                </div>
-              </div>
-            )}
-          </div>
-          <div className="flex flex-wrap gap-2 mb-6">
+          <div className="flex flex-wrap gap-2 mb-6 -ml-1">
             {categories?.map((category, index) => {
               if (typeof category === 'object' && category !== null) {
                 const { title: categoryTitle } = category
@@ -66,6 +50,23 @@ export const PostHero: React.FC<{
               }
               return null
             })}
+          </div>
+          <div className="">
+            <h1 className="mb-6 text-4xl tracking-tight sm:text-5xl">
+              {title}
+            </h1>
+          </div>
+
+          <div className="flex flex-col gap-4 mb-6 md:flex-row md:gap-16">
+            {hasAuthors && (
+              <div className="flex flex-col gap-4">
+                <div className="flex gap-1">
+                  <p className="text-sm opacity-70">By</p>
+
+                  <p>{formatAuthors(populatedAuthors)}</p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </Container>

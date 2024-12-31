@@ -18,11 +18,6 @@ import logoPlanetaria from '@/images/logos/planetaria.svg'
 import logoStarbucks from '@/images/logos/starbucks.svg'
 import logoGdsc from '@/images/logos/gdsc.svg'
 import logoHawkhacks from '@/images/logos/hawkhacks.svg'
-import image1 from '@/images/photos/image-1.jpg'
-import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
 import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 import Timer from '@/components/Timer'
@@ -30,14 +25,12 @@ import Hackathon from '@/components/Hackathon'
 import Projects from './projects/page'
 import TypingText from '@/components/animata/text/typing-text'
 import TextAnimate from '@/components/animata/text/wave-reveal'
-// import { getIntro, RichTextContent } from '@/lib/contentful'
-// import RichTextRenderer from '@/components/rich-text-renderer'
 import { cache, Suspense } from 'react'
 import RichText from '@/components/payload/RichText'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { ArticleCard } from '@/components/payload/ArticleCard'
-import { queryAllPosts } from './posts/page'
+import { queryAllPosts } from '@/lib/articles'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -341,14 +334,6 @@ export default async function Home() {
           </h1>
           <span className="block mt-6 text-base text-zinc-600 dark:text-zinc-300">
             <RichText data={introText} />
-            {/* <RichTextRenderer content={intro1} />
-            <span className="block mb-3">
-              I'm 21. For the past 3 years—or exactly{' '}
-              <Timer className="text-blue-500 dark:text-blue-300" />{' '}
-              milliseconds—I've been turning coffee and code into building apps,
-              solving problems, and having fun breaking (and fixing) things!
-            </span>
-            <RichTextRenderer content={intro2} /> */}
           </span>
           <div className="flex gap-6 mt-6">
             <SocialLink

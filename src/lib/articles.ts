@@ -1,4 +1,6 @@
 import glob from 'fast-glob'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
 
 interface Article {
   title: string
@@ -35,4 +37,26 @@ export async function getAllArticles() {
   let articles = await Promise.all(articleFilenames.map(importArticle))
 
   return articles.sort((a, z) => +new Date(z.date) - +new Date(a.date))
+}
+
+export const queryAllPosts = async () => {
+  const payload = await getPayload({ config: configPromise })
+
+  const posts = await payload.find({
+    collection: 'posts',
+    depth: 1,
+    limit: 12,
+    overrideAccess: false,
+    select: {
+      title: true,
+      slug: true,
+      categories: true,
+      meta: true,
+      publishedAt: true,
+    },
+  })
+
+  return posts.docs.sort(
+    (a, z) => +new Date(z.publishedAt) - +new Date(a.publishedAt),
+  )
 }

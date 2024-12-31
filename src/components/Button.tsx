@@ -27,8 +27,12 @@ export function Button({
   )
 
   return typeof props.href === 'undefined' ? (
-    <button className={className} {...props} />
+    <button
+      className={className}
+      {...(props as React.ComponentPropsWithoutRef<'button'>)}
+    />
   ) : (
+    //@ts-ignore
     <Link className={className} {...props} />
   )
 }

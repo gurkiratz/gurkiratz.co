@@ -2,6 +2,8 @@
 import { Highlight, themes } from 'prism-react-renderer'
 import React from 'react'
 import { CopyButton } from './CopyButton'
+import { GitHubIcon } from '../../components/SocialIcons'
+import { ThemeProvider, useTheme } from 'next-themes'
 
 type Props = {
   code: string
@@ -10,9 +12,16 @@ type Props = {
 
 export const Code: React.FC<Props> = ({ code, language = '' }) => {
   if (!code) return null
+  let { resolvedTheme } = useTheme()
 
   return (
-    <Highlight code={code} language={language} theme={themes.vsDark}>
+    <Highlight
+      code={code}
+      language={language}
+      theme={
+        resolvedTheme === 'dark' ? themes.oceanicNext : themes.nightOwlLight
+      }
+    >
       {({ getLineProps, getTokenProps, tokens }) => (
         <div className="relative">
           <pre className="p-4 overflow-x-auto text-sm text-gray-800 bg-gray-100 border border-gray-300 rounded-lg dark:border-zinc-700 dark:bg-zinc-950 dark:text-gray-200">

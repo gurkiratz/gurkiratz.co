@@ -59,21 +59,29 @@ export const ArticleCard: React.FC<{
           </Card.Eyebrow>
         )}
         <Card.Description>
-          <div className="flex flex-wrap gap-2 mt-1">
-            {categories?.map((category, index) => {
-              if (typeof category === 'object' && category !== null) {
-                const { title: categoryTitle } = category
+          <div className="flex flex-col gap-1">
+            {description && (
+              <div className="mt-2">
+                {description && <p>{sanitizedDescription}</p>}
+              </div>
+            )}
 
-                const titleToUse = categoryTitle || 'Untitled category'
+            <div className="flex flex-wrap gap-2 mt-1 -ml-1">
+              {categories?.map((category, index) => {
+                if (typeof category === 'object' && category !== null) {
+                  const { title: categoryTitle } = category
 
-                return (
-                  <Badge key={category.id} variant="outline">
-                    {titleToUse.toUpperCase()}
-                  </Badge>
-                )
-              }
-              return null
-            })}
+                  const titleToUse = categoryTitle || 'Untitled category'
+
+                  return (
+                    <Badge key={category.id} variant="outline">
+                      {titleToUse.toUpperCase()}
+                    </Badge>
+                  )
+                }
+                return null
+              })}
+            </div>
           </div>
         </Card.Description>
         <Card.Cta>Read article</Card.Cta>

@@ -49,6 +49,7 @@ export const FormBlock: React.FC<
   } = props
 
   const formMethods = useForm({
+    //@ts-ignore
     defaultValues: buildInitialFormState(formFromProps.fields),
   })
   const {
