@@ -52,7 +52,7 @@ export const seed = async ({
       payload.updateGlobal({
         slug: global,
         data: {
-          navItems: [],
+          // navItems: [],
         },
         depth: 0,
         context: {
@@ -333,6 +333,7 @@ export const seed = async ({
               type: 'reference',
               label: 'Contact',
               reference: {
+                //@ts-ignore
                 relationTo: 'pages',
                 value: contactPage.id,
               },

@@ -11,8 +11,9 @@ type Props = {
 }
 
 export const Code: React.FC<Props> = ({ code, language = '' }) => {
-  if (!code) return null
   let { resolvedTheme } = useTheme()
+
+  if (!code) return null
 
   return (
     <Highlight
