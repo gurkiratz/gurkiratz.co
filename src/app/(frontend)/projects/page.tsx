@@ -14,17 +14,18 @@ import Link from 'next/link'
 interface Project {
   name: string
   description: string
-  link: {href: string, label: string}
+  link: { href: string; label: string }
   logo: string
-  
 }
 
 const projects: Project[] = [
   {
     name: '6ix City Immigration',
-    description:
-      'A beautifully designed website for 6ix City Immigration Inc.',
-    link: { href: 'https://6ixcityimmigration.ca', label: '6ixcityimmigration.ca' },
+    description: 'A beautifully designed website for 6ix City Immigration Inc.',
+    link: {
+      href: 'https://6ixcityimmigration.ca',
+      label: '6ixcityimmigration.ca',
+    },
     logo: 'https://utfs.io/f/a76ea53a-c8b2-460f-8ccb-8a9d380d0ea6-hru0oc.png',
   },
   {
@@ -38,31 +39,41 @@ const projects: Project[] = [
     name: 'We Broke The Ice - GDSC Hacks 2024 (Best UI Winner)',
     description:
       'Generate AI based icebreaker ideas for easy access and intuitive step-by-step instructions.',
-    link: { href: 'https://webroketheice.gurkiratz.co/', label: 'webroketheice.gurkiratz.co/' },
+    link: {
+      href: 'https://webroketheice.gurkiratz.co/',
+      label: 'webroketheice.gurkiratz.co/',
+    },
     logo: 'https://em-content.zobj.net/source/twitter/408/ice_1f9ca.png',
   },
   {
     name: 'Workify - Hawk Hacks 2024',
     description:
       'Outsourcing work platform and facilitate micro-payments in NEAR/Solana tokens',
-    link: { href: 'https://github.com/gurkiratz/workifyy', label: 'github.com/gurkiratz/workifyy' },
+    link: {
+      href: 'https://github.com/gurkiratz/workifyy',
+      label: 'github.com/gurkiratz/workifyy',
+    },
     logo: 'https://em-content.zobj.net/source/apple/391/hammer-and-wrench_1f6e0-fe0f.png',
   },
   {
     name: 'IOS World Clock',
-    description:
-      'Web Clone of Apple World Clock w/ day.js API',
-    link: { href: 'https://gurkiratz.github.io/ios-world-clock/', label: 'gurkiratz.github.io/ios-world-clock/' },
+    description: 'Web Clone of Apple World Clock w/ day.js API',
+    link: {
+      href: 'https://gurkiratz.github.io/ios-world-clock/',
+      label: 'gurkiratz.github.io/ios-world-clock/',
+    },
     logo: 'https://em-content.zobj.net/source/apple/391/mantelpiece-clock_1f570-fe0f.png',
   },
   {
     name: 'Global Sikhs',
     description:
       'A well built website for Global Sikhs NGO (under construction)',
-    link: { href: 'https://globalsikhs-v2.vercel.app/', label: 'globalsikhs-v2.vercel.app' },
+    link: {
+      href: 'https://globalsikhs-v2.vercel.app/',
+      label: 'globalsikhs-v2.vercel.app',
+    },
     logo: 'https://utfs.io/f/PqKzO2Akrj45v88NKnQg9Sapzh57q1i0IFHoOTnGjLlNWu3x',
   },
-  
 ]
 
 function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -86,45 +97,52 @@ export default function Projects() {
     <Container className="mt-16 sm:mt-32">
       <header className="max-w-2xl">
         <h1 className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-100">
-        Building My Vision
+          Building My Vision
         </h1>
         <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-        Here is a showcase of some of my projects that I made. They can be found on my <Link className='font-bold underline' href='https://github.com/gurkiratz'>Github</Link>! I am working on some projects that involve TypeScript and NextJS, they will be uploaded in a while.
-
-
+          Here is a showcase of some of my projects that I made. They can be
+          found on my{' '}
+          <Link
+            className="font-bold underline"
+            href="https://github.com/gurkiratz"
+          >
+            Github
+          </Link>
+          ! I am working on some projects that involve TypeScript and NextJS,
+          they will be uploaded in a while.
         </p>
       </header>
       <div className="mt-16 sm:mt-20">
         <ul
-        role="list"
-        className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
-      >
-        {projects.map((project) => (
-          <Card as="li" key={project.name}>
-            <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-              <Image
-                src={project.logo}
-                alt=""
-                width={'100'}
-                height={'100'}
-                className="h-8 w-8"
-                unoptimized
-              />
-            </div>
-            <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
-              <Card.Link href={project.link.href} target='_blank'>{project.name}</Card.Link>
-            </h2>
-            <Card.Description>{project.description}</Card.Description>
-            <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
-              <LinkIcon className="h-6 w-6 flex-none" />
-              <span className="ml-2">{project.link.label}</span>
-            </p>
-          </Card>
-        ))}
-      </ul></div>
+          role="list"
+          className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {projects.map((project) => (
+            <Card as="li" key={project.name}>
+              <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+                <Image
+                  src={project.logo}
+                  alt=""
+                  width={'100'}
+                  height={'100'}
+                  className="h-8 w-8"
+                  unoptimized
+                />
+              </div>
+              <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
+                <Card.Link href={project.link.href} target="_blank">
+                  {project.name}
+                </Card.Link>
+              </h2>
+              <Card.Description>{project.description}</Card.Description>
+              <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
+                <LinkIcon className="h-6 w-6 flex-none" />
+                <span className="ml-2">{project.link.label}</span>
+              </p>
+            </Card>
+          ))}
+        </ul>
+      </div>
     </Container>
-    
-      
-    
   )
 }
