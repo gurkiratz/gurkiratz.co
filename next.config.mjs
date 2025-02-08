@@ -27,14 +27,18 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
-        port: '',
-        search: '',
       },
       {
         protocol: 'https',
         hostname: 'utfs.io',
-        port: '',
-        search: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'indieground.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
       },
     ],
   },

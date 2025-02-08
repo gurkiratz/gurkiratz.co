@@ -111,8 +111,8 @@ function SocialLink({
   icon: React.ComponentType<{ className?: string }>
 }) {
   return (
-    <Link className="p-1 -m-1 group" target="_blank" {...props}>
-      <Icon className="w-6 h-6 transition fill-zinc-500 group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
+    <Link className="group -m-1 p-1" target="_blank" {...props}>
+      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
     </Link>
   )
 }
@@ -121,16 +121,16 @@ function Newsletter() {
   return (
     <form
       action="/thank-you"
-      className="p-6 border rounded-2xl border-zinc-100 dark:border-zinc-700/40"
+      className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
     >
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <MailIcon className="flex-none w-6 h-6" />
+        <MailIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">Stay up to date</span>
       </h2>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
         Get notified when I publish something new, and unsubscribe at any time.
       </p>
-      <div className="flex mt-6">
+      <div className="mt-6 flex">
         <input
           type="email"
           placeholder="Email address"
@@ -138,7 +138,7 @@ function Newsletter() {
           required
           className="min-w-0 flex-auto appearance-none rounded-md border border-zinc-900/10 bg-white px-3 py-[calc(theme(spacing.2)-1px)] shadow-md shadow-zinc-800/5 placeholder:text-zinc-400 focus:border-teal-500 focus:outline-none focus:ring-4 focus:ring-teal-500/10 sm:text-sm dark:border-zinc-700 dark:bg-zinc-700/[0.15] dark:text-zinc-200 dark:placeholder:text-zinc-500 dark:focus:border-teal-400 dark:focus:ring-teal-400/10"
         />
-        <Button type="submit" className="flex-none ml-4">
+        <Button type="submit" className="ml-4 flex-none">
           Join
         </Button>
       </div>
@@ -166,14 +166,14 @@ function Role({ role }: { role: Role }) {
 
   return (
     <li className="flex gap-4">
-      <div className="relative flex items-center justify-center flex-none w-10 h-10 mt-1 rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
         <Link href={role.href}>
           <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
         </Link>
       </div>
-      <dl className="flex flex-wrap flex-auto gap-x-2">
+      <dl className="flex flex-auto flex-wrap gap-x-2">
         <dt className="sr-only">Company</dt>
-        <dd className="flex-none w-full text-sm font-medium text-zinc-900 dark:text-zinc-100">
+        <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
           {role.company}
         </dd>
         <dt className="sr-only">Role</dt>
@@ -259,9 +259,9 @@ function Resume() {
   ]
 
   return (
-    <div className="p-6 border rounded-2xl border-zinc-100 dark:border-zinc-700/40">
+    <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <BriefcaseIcon className="flex-none w-6 h-6" />
+        <BriefcaseIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">Hackathons</span>
       </h2>
       <ol className="mt-6 space-y-4">
@@ -269,9 +269,9 @@ function Resume() {
           <Role key={roleIndex} role={role} />
         ))}
       </ol>
-      <Button href="#" variant="secondary" className="w-full mt-6 group">
+      <Button href="#" variant="secondary" className="group mt-6 w-full">
         Download CV
-        <ArrowDownIcon className="w-4 h-4 transition stroke-zinc-400 group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
+        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
       </Button>
     </div>
   )
@@ -289,7 +289,7 @@ function Photos() {
 
   return (
     <div className="mt-16 sm:mt-20">
-      <div className="flex justify-center gap-5 py-4 -my-4 overflow-hidden sm:gap-8">
+      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
         {images.map((image, imageIndex) => (
           <div
             key={imageIndex}
@@ -304,7 +304,7 @@ function Photos() {
               height={1000}
               alt=""
               sizes="(min-width: 640px) 18rem, 11rem"
-              className="absolute inset-0 object-cover w-full h-full"
+              className="absolute inset-0 h-full w-full object-cover"
             />
           </div>
         ))}
@@ -332,10 +332,10 @@ export default async function Home() {
             </Link>
             !
           </h1>
-          <span className="block mt-6 text-base text-zinc-600 dark:text-zinc-300">
+          <span className="mt-6 block text-base text-zinc-600 dark:text-zinc-300">
             <RichText data={introText} />
           </span>
-          <div className="flex gap-6 mt-6">
+          <div className="mt-6 flex gap-6">
             <SocialLink
               href="https://github.com/gurkiratz"
               aria-label="Follow on GitHub"
@@ -375,7 +375,7 @@ export default async function Home() {
             Writing on Software Development, College life, and Hackathons.
           </p>
         </header>
-        <div className="grid max-w-xl grid-cols-1 mt-16 gap-y-20 lg:mx-auto lg:max-w-none lg:grid-cols-2">
+        <div className="mt-16 max-w-xl lg:mx-auto lg:max-w-none">
           <div className="flex flex-col gap-16">
             {posts?.map((result) => {
               if (typeof result === 'object' && result !== null) {
@@ -391,9 +391,6 @@ export default async function Home() {
 
               return null
             })}
-          </div>
-          <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Hackathon />
           </div>
         </div>
       </Container>
