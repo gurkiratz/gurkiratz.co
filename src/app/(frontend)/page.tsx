@@ -333,14 +333,17 @@ export default async function Home() {
             !
           </h1>
           <span className="mt-6 block text-base text-zinc-600 dark:text-zinc-300">
-            <RichText data={introText.intro1} className="m-0 text-zinc-300" />
+            <RichText
+              data={introText.intro1}
+              className="m-0 dark:text-zinc-300"
+            />
             <span>
               I'm 21. For the past 3 years—or exactly{' '}
               <Timer className="text-blue-500 dark:text-blue-300" />{' '}
               milliseconds—I've been turning coffee and code into building apps,
               solving problems, and having fun breaking (and fixing) things!
             </span>
-            <RichText data={introText.intro2} className="text-zinc-300" />
+            <RichText data={introText.intro2} className="dark:text-zinc-300" />
           </span>
           <div className="mt-6 flex gap-6">
             <SocialLink
