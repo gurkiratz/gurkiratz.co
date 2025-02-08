@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Card,
   CardContent,
@@ -11,11 +13,13 @@ import { Globe, Code2, Github, Calendar, Trophy } from 'lucide-react'
 import { Hackathon } from '@/types/hackathon'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState } from 'react'
 
 export function HackathonCard({ hackathon }: { hackathon: Hackathon }) {
+  const [isExpanded, setIsExpanded] = useState(false)
   return (
     <Card className="w-full max-w-md overflow-hidden transition-all duration-300 hover:scale-[1.03] hover:shadow-lg dark:border-gray-500/20">
-      <div className="relative h-64 overflow-hidden transition-all">
+      <div className="relative h-52 overflow-hidden transition-all sm:h-64">
         <Image
           src={
             hackathon.imageUrl ||
@@ -26,7 +30,7 @@ export function HackathonCard({ hackathon }: { hackathon: Hackathon }) {
           objectFit="cover"
           width={500}
           height={600}
-          className="h-full transition-transform duration-300"
+          className="transition-transform duration-300 sm:h-full"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         <CardHeader className="absolute bottom-0 left-0 right-0 text-white">
@@ -42,9 +46,21 @@ export function HackathonCard({ hackathon }: { hackathon: Hackathon }) {
           {hackathon.won && <Trophy className="mr-2 h-5 w-5 text-yellow-500" />}
           <h3 className="text-xl font-semibold">{hackathon.project.name}</h3>
         </div>
-        <p className="text-muted-foreground mb-4 text-sm">
-          {hackathon.project.description}
-        </p>
+        <div className="mb-4">
+          <p className="text-muted-foreground text-sm">
+            {isExpanded || hackathon.project.description.length <= 150
+              ? hackathon.project.description
+              : hackathon.project.description.slice(0, 150) + '...'}
+          </p>
+          {hackathon.project.description.length > 150 && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="text-primary hover:text-primary/80 mt-1 text-sm font-medium"
+            >
+              {isExpanded ? 'Show Less' : 'Show More'}
+            </button>
+          )}
+        </div>
         <div className="mb-4 flex flex-wrap gap-2">
           {hackathon.project.websiteUrl && (
             <Button
@@ -101,7 +117,7 @@ export function HackathonCard({ hackathon }: { hackathon: Hackathon }) {
         </div>
         <div className="flex flex-wrap gap-2">
           {hackathon.technologies.map((tech, index) => (
-            <Badge key={index} variant="default">
+            <Badge key={index} variant="secondary">
               {tech}
             </Badge>
           ))}
