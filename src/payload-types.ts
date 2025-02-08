@@ -45,12 +45,14 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
-    intro: Intro;
+    intro1: Intro1;
+    intro2: Intro2;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
-    intro: IntroSelect<false> | IntroSelect<true>;
+    intro1: Intro1Select<false> | Intro1Select<true>;
+    intro2: Intro2Select<false> | Intro2Select<true>;
   };
   locale: null;
   user: User & {
@@ -1365,9 +1367,33 @@ export interface Footer {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "intro".
+ * via the `definition` "intro1".
  */
-export interface Intro {
+export interface Intro1 {
+  id: string;
+  'intro-text': {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "intro2".
+ */
+export interface Intro2 {
   id: string;
   'intro-text': {
     root: {
@@ -1435,9 +1461,19 @@ export interface FooterSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "intro_select".
+ * via the `definition` "intro1_select".
  */
-export interface IntroSelect<T extends boolean = true> {
+export interface Intro1Select<T extends boolean = true> {
+  'intro-text'?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "intro2_select".
+ */
+export interface Intro2Select<T extends boolean = true> {
   'intro-text'?: T;
   updatedAt?: T;
   createdAt?: T;

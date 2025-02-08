@@ -333,7 +333,14 @@ export default async function Home() {
             !
           </h1>
           <span className="mt-6 block text-base text-zinc-600 dark:text-zinc-300">
-            <RichText data={introText} />
+            <RichText data={introText.intro1} />
+            <span className="mb-3 block text-base text-zinc-600 dark:text-zinc-400">
+              I'm 21. For the past 3 years—or exactly{' '}
+              <Timer className="text-blue-500 dark:text-blue-300" />{' '}
+              milliseconds—I've been turning coffee and code into building apps,
+              solving problems, and having fun breaking (and fixing) things!
+            </span>
+            <RichText data={introText.intro2} />
           </span>
           <div className="mt-6 flex gap-6">
             <SocialLink
@@ -401,9 +408,12 @@ export default async function Home() {
 const getIntroText = cache(async () => {
   const payload = await getPayload({ config: configPromise })
 
-  const result = await payload.findGlobal({
-    slug: 'intro',
+  const result1 = await payload.findGlobal({
+    slug: 'intro1',
+  })
+  const result2 = await payload.findGlobal({
+    slug: 'intro2',
   })
 
-  return result['intro-text']
+  return { intro1: result1['intro-text'], intro2: result2['intro-text'] }
 })
