@@ -321,56 +321,66 @@ export default async function Home() {
   return (
     <>
       <Container className="mt-9">
-        <div className="max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Hi, I{"'"}m{' '}
-            <Link
-              href={'https://github.com/gurkiratz'}
-              className="hover:underline"
-            >
-              Gurkirat
-            </Link>
-            !
-          </h1>
-          <span className="mt-6 block text-base text-zinc-600 dark:text-zinc-300">
-            <RichText
-              data={introText.intro1}
-              className="m-0 dark:text-zinc-300"
-            />
-            <span>
-              I'm 21. For the past 3 years—or exactly{' '}
-              <Timer className="text-blue-500 dark:text-blue-300" />{' '}
-              milliseconds—I've been turning coffee and code into building apps,
-              solving problems, and having fun breaking (and fixing) things!
+        <div className="flex flex-col items-start justify-between gap-8 md:w-full md:flex-row">
+          <div className="max-w-xl">
+            <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
+              Hi, I{"'"}m{' '}
+              <Link
+                href={'https://github.com/gurkiratz'}
+                className="hover:underline"
+              >
+                Gurkirat
+              </Link>
+              !
+            </h1>
+            <span className="mt-6 block text-base text-zinc-600 dark:text-zinc-300">
+              <RichText
+                data={introText.intro1}
+                className="m-0 dark:text-zinc-300"
+              />
+              <span>
+                I'm 21. For the past 3 years—or exactly{' '}
+                <Timer className="text-blue-500 dark:text-blue-300" />{' '}
+                milliseconds—I've been turning coffee and code into building
+                apps, solving problems, and having fun breaking (and fixing)
+                things!
+              </span>
+              {/* <RichText data={introText.intro2} className="dark:text-zinc-300" /> */}
             </span>
-            <RichText data={introText.intro2} className="dark:text-zinc-300" />
-          </span>
-          <div className="mt-6 flex gap-6">
-            <SocialLink
-              href="https://github.com/gurkiratz"
-              aria-label="Follow on GitHub"
-              icon={GitHubIcon}
-            />
-            <SocialLink
-              href="https://www.linkedin.com/in/gurkiratz/"
-              aria-label="Follow on LinkedIn"
-              icon={LinkedInIcon}
-            />
-            <SocialLink
-              href="https://twitter.com/theGurSingh"
-              aria-label="Follow on X"
-              icon={XIcon}
-            />
-            <SocialLink
-              href="https://instagram.com/gurkiratxz"
-              aria-label="Follow on Instagram"
-              icon={InstagramIcon}
-            />
-            <SocialLink
-              href="https://devpost.com/gurkiratz/challenges"
-              aria-label="Follow on Devpost"
-              icon={DevpostIcon}
-            />
+            {/* <div className="mt-6 flex gap-6">
+              <SocialLink
+                href="https://github.com/gurkiratz"
+                aria-label="Follow on GitHub"
+                icon={GitHubIcon}
+              />
+              <SocialLink
+                href="https://www.linkedin.com/in/gurkiratz/"
+                aria-label="Follow on LinkedIn"
+                icon={LinkedInIcon}
+              />
+              <SocialLink
+                href="https://twitter.com/theGurSingh"
+                aria-label="Follow on X"
+                icon={XIcon}
+              />
+              <SocialLink
+                href="https://instagram.com/gurkiratxz"
+                aria-label="Follow on Instagram"
+                icon={InstagramIcon}
+              />
+              <SocialLink
+                href="https://devpost.com/gurkiratz/challenges"
+                aria-label="Follow on Devpost"
+                icon={DevpostIcon}
+              />
+            </div> */}
+          </div>
+          <div className="flex flex-col gap-3 text-right underline decoration-zinc-800/20 dark:decoration-white/10">
+            <a href="https://linkedin.com/in/gurkiratz" className="">
+              LinkedIn
+            </a>
+            <a href="https://github.com/gurkiratz">Github</a>
+            <a href="https://twitter.com/theGurSingh">Twitter</a>
           </div>
         </div>
       </Container>

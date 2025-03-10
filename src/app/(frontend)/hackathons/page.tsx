@@ -86,9 +86,9 @@ const hackathons: Hackathon[] = [
       name: 'Workify',
       description:
         'A blockchain-based app for outsourcing tasks for big companies.',
-      devpostUrl: 'https://dorahacks.io/buidl/20383',
-      githubUrl:
+      devpostUrl:
         'https://taikai.network/hackbox/hackathons/hawkhacks/projects/clwd07nvc0cmiz901eq354ofp/idea',
+      githubUrl: 'https://github.com/gurkiratz/workifyy',
     },
     technologies: ['Next.js', 'Node', 'S3', 'Postgres', 'Prisma'],
     won: false,
