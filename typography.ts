@@ -93,7 +93,7 @@ export default function typographyStyles({ theme }: PluginUtils) {
         h3: {
           fontSize: theme('fontSize.base')[0],
           lineHeight: theme('lineHeight.7'),
-          marginTop: theme('spacing.16'),
+          // marginTop: theme('spacing.16'),
           marginBottom: theme('spacing.4'),
         },
         ':is(h2, h3) + *': {
@@ -107,17 +107,17 @@ export default function typographyStyles({ theme }: PluginUtils) {
 
         // Inline elements
         a: {
-          color: 'var(--tw-prose-links)',
-          fontWeight: theme('fontWeight.bold'),
+          // color: 'var(--tw-prose-links)',
+          fontWeight: theme('fontWeight.semibold'),
           textDecoration: 'underline',
-          textDecorationColor: 'var(--tw-prose-underline)',
+          textDecorationColor: '',
           transitionProperty: 'color, text-decoration-color',
           transitionDuration: theme('transitionDuration.150'),
           transitionTimingFunction: theme('transitionTimingFunction.in-out'),
         },
         'a:hover': {
-          color: 'var(--tw-prose-links-hover)',
-          textDecorationColor: 'var(--tw-prose-underline-hover)',
+          // color: 'var(--tw-prose-links-hover)',
+          // textDecorationColor: 'var(--tw-prose-underline-hover)',
         },
         strong: {
           color: 'var(--tw-prose-bold)',

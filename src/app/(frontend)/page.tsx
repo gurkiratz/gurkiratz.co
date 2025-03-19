@@ -328,7 +328,7 @@ export default async function Home() {
               href={'https://github.com/gurkiratz'}
               className="hover:underline"
             >
-              Gurkirat
+            Gurkirat
             </Link>
             !
           </h1>
@@ -340,12 +340,12 @@ export default async function Home() {
             <span>
               I'm 21. For the past 3 years—or exactly{' '}
               <Timer className="text-blue-500 dark:text-blue-300" />{' '}
-              milliseconds—I've been turning coffee and code into building apps,
+              milliseconds—I've been turning coffee into code,
               solving problems, and having fun breaking (and fixing) things!
             </span>
             <RichText data={introText.intro2} className="dark:text-zinc-300" />
           </span>
-          <div className="mt-6 flex gap-6">
+          {/* <div className="mt-6 flex gap-6">
             <SocialLink
               href="https://github.com/gurkiratz"
               aria-label="Follow on GitHub"
@@ -371,7 +371,7 @@ export default async function Home() {
               aria-label="Follow on Devpost"
               icon={DevpostIcon}
             />
-          </div>
+          </div> */}
         </div>
       </Container>
       {/* <Photos /> */}
