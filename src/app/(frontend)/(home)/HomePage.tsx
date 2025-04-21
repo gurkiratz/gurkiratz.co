@@ -25,6 +25,7 @@ import Projects from '../projects/page'
 import RichText from '@/components/payload/RichText'
 import { ArticleCard } from '@/components/payload/ArticleCard'
 import { ProjectsComponent } from './ProjectsComponent'
+import { MagneticSocialLinksDemo } from './social-components/social-component'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -317,7 +318,7 @@ export default function HomePage({ posts, introText }: HomePageProps) {
               href={'https://github.com/gurkiratz'}
               className="hover:underline"
             >
-            Gurkirat
+              Gurkirat
             </Link>
             !
           </h1>
@@ -327,14 +328,14 @@ export default function HomePage({ posts, introText }: HomePageProps) {
               className="m-0 dark:text-zinc-300"
             />
             <span>
-              For the past 3 years—or exactly{' '}
+              for the past 3 years—or exactly{' '}
               <Timer className="text-blue-500 dark:text-blue-300" />{' '}
-              milliseconds—I've been turning coffee into code,
-              solving problems, and having fun breaking (and fixing) things!
+              milliseconds—i've been turning coffee into code, solving problems,
+              and having fun breaking (and fixing) things!
             </span>
             <RichText data={introText.intro2} className="dark:text-zinc-300" />
           </span>
-          <div className="mt-6 flex gap-6">
+          {/* <div className="mt-6 flex gap-6">
             <SocialLink
               href="https://github.com/gurkiratz"
               aria-label="Follow on GitHub"
@@ -360,11 +361,12 @@ export default function HomePage({ posts, introText }: HomePageProps) {
               aria-label="Follow on Devpost"
               icon={DevpostIcon}
             />
-          </div>
+          </div> */}
+          <MagneticSocialLinksDemo />
         </div>
       </Container>
       {/* <Photos /> */}
-      <ProjectsComponent />
+      {/* <ProjectsComponent /> */}
       <Projects />
       <Container className="mt-24 md:mt-28">
         <header className="max-w-2xl">
