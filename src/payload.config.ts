@@ -9,6 +9,7 @@ import sharp from 'sharp'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Posts } from './collections/Posts'
+import { Hackathons } from './collections/Hackathons' // Import the new collection
 import { plugins } from './plugins'
 import { Categories } from './collections/Categories'
 import { Pages } from './collections/Pages'
@@ -56,7 +57,7 @@ export default buildConfig({
       ],
     },
   },
-  collections: [Users, Media, Posts, Categories, Pages],
+  collections: [Users, Media, Posts, Categories, Pages, Hackathons], // Add Hackathons to the collections array
   globals: [Header, Footer, Intro1, Intro2],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
