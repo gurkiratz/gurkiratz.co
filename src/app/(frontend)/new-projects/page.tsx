@@ -1,3 +1,5 @@
+export const revalidate = 60 // Revalidate every 60 seconds
+
 import { Container } from '@/components/Container'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
