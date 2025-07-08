@@ -15,6 +15,7 @@ import { imageHero1 } from './image-hero-1'
 import { post1 } from './post-1'
 import { post2 } from './post-2'
 import { post3 } from './post-3'
+import { seedNavLinks } from './navlinks'
 
 const collections: CollectionSlug[] = [
   'categories',
@@ -24,6 +25,7 @@ const collections: CollectionSlug[] = [
   'forms',
   'form-submissions',
   'search',
+  'navlinks' as CollectionSlug, // Temporary fix until types are regenerated
 ]
 const globals: GlobalSlug[] = ['header', 'footer']
 
@@ -275,6 +277,10 @@ export const seed = async ({
       relatedPosts: [post1Doc.id, post2Doc.id],
     },
   })
+
+  payload.logger.info(`— Seeding navigation links...`)
+
+  await seedNavLinks(payload)
 
   payload.logger.info(`— Seeding contact form...`)
 

@@ -1,7 +1,10 @@
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
+import { getNavLinks } from '@/lib/navigation'
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export async function Layout({ children }: { children: React.ReactNode }) {
+  const navRoutes = await getNavLinks()
+
   return (
     <>
       <div className="fixed inset-0 flex justify-center sm:px-8">
@@ -10,7 +13,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </div>
       <div className="relative flex w-full flex-col">
-        <Header />
+        <Header navRoutes={navRoutes} />
         <main className="flex-auto">{children}</main>
         <Footer />
       </div>
