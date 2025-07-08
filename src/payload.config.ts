@@ -16,6 +16,7 @@ import { Header } from './Header/config'
 import { Footer } from './Footer/config'
 import { Intro1, Intro2 } from './collections/Intro'
 import { Projects } from './collections/Projects'
+import { NavLinks } from './collections/NavLinks'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -40,7 +41,7 @@ export default buildConfig({
       ],
     },
   },
-  collections: [Users, Media, Posts, Categories, Pages, Projects],
+  collections: [Users, Media, Posts, Categories, Pages, Projects, NavLinks],
   globals: [Header, Footer, Intro1, Intro2],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

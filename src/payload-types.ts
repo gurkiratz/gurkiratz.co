@@ -73,6 +73,7 @@ export interface Config {
     categories: Category;
     pages: Page;
     projects: Project;
+    navlinks: Navlink;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -89,6 +90,7 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    navlinks: NavlinksSelect<false> | NavlinksSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -737,6 +739,35 @@ export interface Project {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navlinks".
+ */
+export interface Navlink {
+  id: string;
+  /**
+   * The display text for the navigation link
+   */
+  label: string;
+  /**
+   * The URL path for the navigation link (e.g., /about, /projects)
+   */
+  href: string;
+  /**
+   * Order of appearance in navigation (lower numbers appear first)
+   */
+  order: number;
+  /**
+   * Whether this navigation link should be displayed
+   */
+  isActive?: boolean | null;
+  /**
+   * Whether this link should open in a new tab
+   */
+  openInNewTab?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -833,6 +864,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'projects';
         value: string | Project;
+      } | null)
+    | ({
+        relationTo: 'navlinks';
+        value: string | Navlink;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1208,6 +1243,19 @@ export interface ProjectsSelect<T extends boolean = true> {
         url?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navlinks_select".
+ */
+export interface NavlinksSelect<T extends boolean = true> {
+  label?: T;
+  href?: T;
+  order?: T;
+  isActive?: T;
+  openInNewTab?: T;
   updatedAt?: T;
   createdAt?: T;
 }
