@@ -31,6 +31,7 @@ import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { ArticleCard } from '@/components/payload/ArticleCard'
 import { queryAllPosts } from '@/lib/articles'
+import ProjectsPage from './projects/page'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -375,7 +376,8 @@ export default async function Home() {
         </div>
       </Container>
       {/* <Photos /> */}
-      <Projects />
+      {/* <Projects /> */}
+      <ProjectsPage variant="home" />
       <Container className="mt-24 md:mt-28">
         <header className="max-w-2xl">
           <h1 className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-100">
