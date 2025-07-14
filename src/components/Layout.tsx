@@ -15,7 +15,7 @@ export async function Layout({ children }: { children: React.ReactNode }) {
       <div className="relative flex w-full flex-col">
         <Header navRoutes={navRoutes} />
         <main className="flex-auto">{children}</main>
-        <Footer />
+        <Footer navRoutes={navRoutes} />
       </div>
     </>
   )

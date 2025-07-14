@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { ContainerInner, ContainerOuter } from '@/components/Container'
-import { navRoutes } from '@/lib/utils'
+import { type NavRoute } from '@/lib/navigation'
 
 function NavLink({
   href,
@@ -20,7 +20,7 @@ function NavLink({
   )
 }
 
-export function Footer() {
+export function Footer({ navRoutes }: { navRoutes: NavRoute[] }) {
   return (
     <footer className="mt-32 flex-none">
       <ContainerOuter>
