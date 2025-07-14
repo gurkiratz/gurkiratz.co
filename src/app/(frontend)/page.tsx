@@ -22,7 +22,7 @@ import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 import Timer from '@/components/Timer'
 import Hackathon from '@/components/Hackathon'
-import Projects from './projects/page'
+import Projects from './old-projects/page'
 import TypingText from '@/components/animata/text/typing-text'
 import TextAnimate from '@/components/animata/text/wave-reveal'
 import { cache, Suspense } from 'react'
@@ -31,6 +31,7 @@ import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { ArticleCard } from '@/components/payload/ArticleCard'
 import { queryAllPosts } from '@/lib/articles'
+import ProjectsPage from './projects/page'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -328,7 +329,7 @@ export default async function Home() {
               href={'https://github.com/gurkiratz'}
               className="hover:underline"
             >
-            Gurkirat
+              Gurkirat
             </Link>
             !
           </h1>
@@ -340,8 +341,8 @@ export default async function Home() {
             <span>
               I'm 21. For the past 3 years—or exactly{' '}
               <Timer className="text-blue-500 dark:text-blue-300" />{' '}
-              milliseconds—I've been turning coffee into code,
-              solving problems, and having fun breaking (and fixing) things!
+              milliseconds—I've been turning coffee into code, solving problems,
+              and having fun breaking (and fixing) things!
             </span>
             <RichText data={introText.intro2} className="dark:text-zinc-300" />
           </span>
@@ -375,7 +376,8 @@ export default async function Home() {
         </div>
       </Container>
       {/* <Photos /> */}
-      <Projects />
+      {/* <Projects /> */}
+      <ProjectsPage variant="home" />
       <Container className="mt-24 md:mt-28">
         <header className="max-w-2xl">
           <h1 className="text-3xl font-bold tracking-tight text-zinc-800 sm:text-4xl dark:text-zinc-100">

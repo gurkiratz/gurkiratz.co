@@ -46,7 +46,7 @@ export default async function RootLayout({
           <div className="relative flex w-full flex-col">
             <Header navRoutes={navRoutes} />
             {children}
-            <Footer />
+            <Footer navRoutes={navRoutes} />
           </div>
         </Providers>
       </body>

@@ -31,7 +31,7 @@ export async function getNavLinks(): Promise<NavRoute[]> {
     return [
       { href: '/', label: 'Home' },
       { href: '/posts', label: 'Posts' },
-      { href: '/new-projects', label: 'Projects' },
+      { href: '/projects', label: 'Projects' },
       { href: '/hackathons', label: 'Hackathons' },
       { href: '/uses', label: 'Uses' },
     ]

@@ -78,6 +78,7 @@ export const ProjectGrid = ({ projects }: ProjectGridProps) => {
                 <React.Fragment key={link.id}>
                   <Link
                     href={link.url}
+                    target="_blank"
                     className="text-sm font-bold underline decoration-zinc-400 decoration-2 underline-offset-4 hover:decoration-black dark:decoration-zinc-600 dark:hover:decoration-white"
                   >
                     {link.label}
