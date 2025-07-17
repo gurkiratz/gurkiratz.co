@@ -17,7 +17,7 @@ export default async function ProjectsPage({
   variant = 'full',
 }: ProjectsPageProps = {}) {
   const payload = await getPayload({ config: configPromise })
-  const response = await payload.find({ collection: 'projects', sort: '-year' })
+  const response = await payload.find({ collection: 'projects' })
   const allProjects = response.docs as Project[]
 
   // Limit projects for home variant
