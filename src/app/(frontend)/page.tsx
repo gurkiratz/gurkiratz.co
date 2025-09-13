@@ -339,7 +339,7 @@ export default async function Home() {
               className="m-0 dark:text-zinc-300"
             />
             <span>
-              I'm 21. For the past 3 years—or exactly{' '}
+              I'm 22. For the past 4 years—or exactly{' '}
               <Timer className="text-blue-500 dark:text-blue-300" />{' '}
               milliseconds—I've been turning coffee into code, solving problems,
               and having fun breaking (and fixing) things!
