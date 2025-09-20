@@ -8,6 +8,8 @@ import { Project } from '@/payload-types'
 import Link from 'next/link'
 import { Button } from '@/components/Button'
 import { ArrowRightIcon } from 'lucide-react'
+import { InteractiveHoverButton } from '@/components/magicui/interactive-hover-button'
+import AttractButton from '@/components/kokonutui/attract-button'
 
 interface ProjectsPageProps {
   variant?: 'home' | 'full'
@@ -40,13 +42,9 @@ export default async function ProjectsPage({
       <ProjectGrid projects={projects} />
       {isHomePage && (
         <div className="mt-12 flex justify-center">
-          <Button
-            href="/projects"
-            className=" w-full px-6 py-3 text-sm font-medium text-zinc-600 transition-all hover:text-zinc-900 hover:underline sm:w-auto dark:text-zinc-400 dark:hover:text-zinc-100"
-            variant="secondary"
-          >
-            All projects <ArrowRightIcon className="h-4 w-4" />
-          </Button>
+          <AttractButton href="/projects" className="min-w-44 md:w-16">
+            All projects
+          </AttractButton>
         </div>
       )}
     </Container>
