@@ -32,6 +32,7 @@ import configPromise from '@payload-config'
 import { ArticleCard } from '@/components/payload/ArticleCard'
 import { queryAllPosts } from '@/lib/articles'
 import ProjectsPage from './projects/page'
+import { Bug, Code, Coffee } from 'lucide-react'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -339,10 +340,23 @@ export default async function Home() {
               className="m-0 dark:text-zinc-300"
             />
             <span>
-              I'm 22. For the past 4 years—or exactly{' '}
+              I'm{' '}
+              {Math.floor(
+                (Date.now() - new Date('2003-07-27').getTime()) /
+                  (1000 * 60 * 60 * 24 * 365.25),
+              )}
+              . For the past{' '}
+              {Math.floor(
+                (Date.now() - new Date('2022-07-27').getTime()) /
+                  (1000 * 60 * 60 * 24 * 365.25),
+              )}{' '}
+              years—or exactly{' '}
               <Timer className="text-blue-500 dark:text-blue-300" />{' '}
-              milliseconds—I've been turning coffee into code, solving problems,
-              and having fun breaking (and fixing) things!
+              milliseconds—I've been turning coffee{' '}
+              <Coffee className="inline-block h-4 w-4" /> into code{' '}
+              <Code className="inline-block h-4 w-4" />, solving problems{' '}
+              <Bug className="inline-block h-4 w-4" />, and having fun breaking
+              (and fixing) things!
             </span>
             <RichText data={introText.intro2} className="dark:text-zinc-300" />
           </span>

@@ -2,7 +2,13 @@
 
 import { useState, useEffect } from 'react'
 
-function Timer({ className }: { className?: string }) {
+type TimerProps = {
+  className?: string
+  // Reserve space to avoid layout shift; measured in monospace character widths
+  minWidthCh?: number
+}
+
+function Timer({ className, minWidthCh = 12 }: TimerProps) {
   const [timeDifference, setTimeDifference] = useState(0)
 
   useEffect(() => {
@@ -19,7 +25,16 @@ function Timer({ className }: { className?: string }) {
     }
   }, [])
 
-  return <span className={className}>{timeDifference}</span>
+  return (
+    <span
+      className={['inline-block text-center font-mono tabular-nums', className]
+        .filter(Boolean)
+        .join(' ')}
+      style={{ minWidth: `${minWidthCh}ch` }}
+    >
+      {timeDifference}
+    </span>
+  )
 }
 
 export default Timer
