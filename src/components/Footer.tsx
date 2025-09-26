@@ -33,6 +33,7 @@ export function Footer({ navRoutes }: { navRoutes: NavRoute[] }) {
                     {route.label}
                   </NavLink>
                 ))}
+                <NavLink href={'https://gurkiratz.github.io/'}>v1</NavLink>
               </div>
               <p className="text-sm text-zinc-400 dark:text-zinc-500">
                 &copy; {new Date().getFullYear()} Gurkirat Singh. All rights

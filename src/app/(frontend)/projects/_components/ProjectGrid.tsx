@@ -4,6 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { Project } from '@/payload-types'
+import { Globe, Github, CodeXml, Youtube } from 'lucide-react'
+import { DevpostIcon } from '@/components/SocialIcons'
 
 interface ProjectGridProps {
   projects: Project[]
@@ -11,25 +13,46 @@ interface ProjectGridProps {
 
 export const ProjectGrid = ({ projects }: ProjectGridProps) => {
   // Get all project types (global)
-  const types = Array.from(new Set(projects.map((p) => p.type).filter(Boolean)));
-  const [selectedType, setSelectedType] = useState<string | null>(null);
+  const types = Array.from(new Set(projects.map((p) => p.type).filter(Boolean)))
+  const [selectedType, setSelectedType] = useState<string | null>(null)
+
+  // Helper function to get icon based on label
+  const getIconForLabel = (label: string) => {
+    const lowerLabel = label.toLowerCase()
+    if (lowerLabel.includes('website')) {
+      return <Globe className="h-4 w-4" />
+    }
+    if (lowerLabel.includes('github')) {
+      return <Github className="h-4 w-4" />
+    }
+    if (lowerLabel.includes('devpost')) {
+      return <DevpostIcon className="h-4 w-4" />
+    }
+    if (lowerLabel.includes('video') || lowerLabel.includes('demo')) {
+      return <Youtube className="h-4 w-4" />
+    }
+    return null
+  }
 
   // Filter projects by selected type (if any)
   const filteredProjects = selectedType
     ? projects.filter((p) => p.type === selectedType)
-    : projects;
+    : projects
 
   // Group filtered projects by year (descending)
-  const projectsByYear = filteredProjects.reduce<{ [year: number]: Project[] }>((acc, project) => {
-    if (project.year) {
-      if (!acc[project.year]) acc[project.year] = [];
-      acc[project.year].push(project);
-    }
-    return acc;
-  }, {});
+  const projectsByYear = filteredProjects.reduce<{ [year: number]: Project[] }>(
+    (acc, project) => {
+      if (project.year) {
+        if (!acc[project.year]) acc[project.year] = []
+        acc[project.year].push(project)
+      }
+      return acc
+    },
+    {},
+  )
   const sortedYears = Object.keys(projectsByYear)
     .map(Number)
-    .sort((a, b) => b - a);
+    .sort((a, b) => b - a)
 
   return (
     <div className="space-y-12">
@@ -60,7 +83,9 @@ export const ProjectGrid = ({ projects }: ProjectGridProps) => {
       </div>
       {sortedYears.map((year) => (
         <section key={year}>
-          <h2 className="mb-4 text-2xl font-bold text-zinc-800 dark:text-zinc-100">{year}</h2>
+          <h2 className="mb-4 text-2xl font-bold text-zinc-800 dark:text-zinc-100">
+            {year}
+          </h2>
           <div className="grid shrink grid-cols-1 gap-8 md:grid-cols-2">
             {projectsByYear[year].map((project) => (
               <div key={project.id}>
@@ -92,8 +117,9 @@ export const ProjectGrid = ({ projects }: ProjectGridProps) => {
                       <Link
                         href={link.url}
                         target="_blank"
-                        className="text-sm font-bold underline decoration-zinc-400 decoration-2 underline-offset-4 hover:decoration-black dark:decoration-zinc-600 dark:hover:decoration-white"
+                        className="flex items-center gap-1 text-sm font-bold underline decoration-zinc-400 decoration-2 underline-offset-4 hover:decoration-black dark:decoration-zinc-600 dark:hover:decoration-white"
                       >
+                        {getIconForLabel(link.label)}
                         {link.label}
                       </Link>
                       {idx < project.links.length - 1 && (
@@ -110,5 +136,5 @@ export const ProjectGrid = ({ projects }: ProjectGridProps) => {
         </section>
       ))}
     </div>
-  );
+  )
 }
